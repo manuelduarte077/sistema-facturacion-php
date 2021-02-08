@@ -1,0 +1,54 @@
+<div class="container2">
+    <div class="row">
+        <h5>Compras de productos</h5>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <form method="get">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input type="text" placeholder="Buscar producto" id="searchCompras" onKeyUp="getCompras(1);">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <a href="compras" class="waves-effect waves-light btn-small ">Comprar</a>
+                |
+                <a class="waves-effect waves-light btn-small grey darken-3" onclick="exportarCompras();">Export</a>
+            </div>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='../Resource/images/iconos/Shopping_cart2.png' />Compras
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Imagen
+                                    </th>
+                                    <th>
+                                        Descripcion
+                                    </th>
+                                    <th>
+                                        Precio
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataFilterCompras">
+
+                            </tbody>
+                        </table>
+                        <div id="paginadorCompras">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

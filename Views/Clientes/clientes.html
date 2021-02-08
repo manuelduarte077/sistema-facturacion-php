@@ -1,0 +1,193 @@
+<div class="container2">
+    <div class="row">
+        <div class="col s12">
+            <ul class="tabs">
+                <li class="tab col s3">
+                    <a href="#test1">Clientes</a>
+                </li>
+                <li class="tab col s3">
+                    <a onclick="cliente.getTickets(1)" href="#test2">Historial</a>
+                </li>
+            </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="input-field col s0">
+                    <a onclick="cliente.restablecerClientes(2);" class="waves-effect waves-light btn modal-trigger"
+                        href="#modal1">Registrar</a>
+                </div>
+                <div class="input-field col s6">
+                    <input placeholder="Buscar cliente" id="searchClientes" type="text" onKeyUp="getClientes(1)">
+                    <label for="searchClientes">Buscar usuario</label>
+                </div>
+            </div>
+            <button class="waves-effect waves-light btn-small grey darken-3" onclick="exportarClientes()">Export</button>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='../Resource/images/iconos/Clientes2.png' />Clientes
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Foto
+                                    </th>
+                                    <th>
+                                        Nombre
+                                    </th>
+                                    <th>
+                                        Apellido
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultCliente">
+
+                            </tbody>
+                        </table>
+                        <div id="paginadorCliente">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="test2" class="col s12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <input placeholder="Buscar ticket" id="searchTicket" type="text" onKeyUp="getTickets(1)">
+                    <label for="searchTicket">Buscar ticket</label>
+                </div>
+            </div>
+            <button class="waves-effect waves-light btn-small amber darken-3" onclick="exportarTicketClientes()">Export</button>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Clientes2.png' /><label
+                            style="font-size: 15px">Ticket</label>
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Deuda
+                                    </th>
+                                    <th>
+                                        Fecha Deuda
+                                    </th>
+                                    <th>
+                                        Pago
+                                    </th>
+                                    <th>
+                                        Fecha Pago
+                                    </th>
+                                    <th>
+                                        Ticket
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="resultTicket">
+
+                            </tbody>
+                        </table>
+                        <div id="paginadorTicket">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+    <form class="col s12" id="validate" enctype="multipart/form-data" method="POST">
+        <div class="modal-content">
+            <center>
+                <h5>Registrar cliente</h5>
+            </center>
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card ">
+                        <div class="card-content white-text">
+                            <center>
+                                <span class="card-title blue-grey-text  ">Foto o imagen</span>
+                                <output id="fotoCliente"></output>
+                            </center>
+                        </div>
+                        <div class="card-action">
+                            <center>
+                                <a>
+                                    <div class="file-field input-field">
+                                        <div class="btn waves-effect waves-light">
+                                            <span>Subir</span>
+                                            <input accept="image/*" type="file" id="files" name="files">
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path " type="text">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a>Foto o Imagen</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Nombre" name="nombre" id="nombre" type="text" class="validate" required>
+                        <label class="error" for="nombre">Nombre</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Apellido" name="apellido" id="apellido" type="text" class="validate"
+                            required>
+                        <label class="error" for="apellido">Apellido</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="NID" name="nid" id="nid" type="text" class="validate" required>
+                        <label class="error" for="nid">NID</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Nº Telefono" name="telefono" id="telefono" type="number" class="validate"
+                            required>
+                        <label class="error" for="telefono">Nº Telefono</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Email" id="email" name="email" class="validate" type="email" required>
+                        <label for="email" class="error">Email</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input placeholder="Direccion" type="text" name="direccion" id="direccion" class="validate "
+                            required />
+                        <label class="error" for="direccion">Direccion</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <select id='creditos'>
+
+                        </select>
+                        <label>Creditos</label>
+                    </div>
+                </div>
+                <input type="text" id="textError" required />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <label id="clienteMessage" class="text-left Message"></label>
+            <button id="clienteClose" class="waves-effect waves-light btn orange">Cancelar</button>
+            <button id="registerCliente" class="waves-effect waves-light btn">Registra</button>
+        </div>
+    </form>
+</div>

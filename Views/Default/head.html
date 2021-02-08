@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Facturaci&oacute;n</title>
+
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/materialize/js/materialize.min.js" type="text/javascript"></script>
+    <script src="http://localhost/PDHN/Sistem/Resource/js/jquery.validate.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/jquery-barcode.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/config.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/funciones.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Uploadpicture.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Usuarios.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Principal.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Clientes.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Proveedores.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Compras.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Productos.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/Cajas.js" type="text/javascript"></script>
+    <script src="http://localhost/PDHN/Sistem/Resource/js/Ventas.js" type="text/javascript"></script>
+    <script src="http://localhost:8080/sistem_facturacion/Resource/js/app.js" type="text/javascript"></script>
+
+
+    <link rel="stylesheet" href="http://localhost:8080/sistem_facturacion/Resource/materialize/css/materialize.min.css">
+    <link rel="stylesheet" href="http://localhost:8080/sistem_facturacion/Resource/css/style.css">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-wrapper cyan darken-2">
+            <a href="#!" class="brand-logo center">
+                <i class="material-icons">
+                </i>
+                Sistema de ventas & facturaci&oacute;n
+            </a>
+            <div id="menuNavbar1">
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="/sistem_facturacion/Usuarios/destroySession" onclick="sessionClose();">Salir</a>
+                    </li>
+                </ul>
+                <a href="#"  data-target="slide-out" class="btn-floating btn-large waves-effect waves-light cyan darken-2 sidenav-trigger"></a>
+            </div>
+        </div>
+    </nav>
+    <ul id="slide-out" class="sidenav">
+        <li>
+            <div class="user-view cyan darken-2">
+                
+                <output id="fotoUser1"></output>
+               
+                <p class="white-text" id="name1"></p>
+               
+                <p class="white-text" id="role1"></p>
+                
+            </div>
+        </li>
+        <li>
+            <a href="/sistem_facturacion/Principal/principal" onclick="">Inicio</a>
+        </li>
+
+        <li>
+            <a href="/sistem_facturacion/Usuarios/usuarios" onclick="">Usuarios</a>
+        </li>
+        <li>
+            <a href="/sistem_facturacion/Cajas/cajas" onclick="">Cajas</a>
+        </li>
+        <li>
+            <a href="/sistem_facturacion/Usuarios/destroySession" onclick="sessionClose();">Salir</a>
+        </li>
+    </ul>
+    <div id="menuNavbar2">
+        <div id="main">
+            <div class="wrapper">
+                <aside id="left-sidebar-nav">
+                    <ul id="slide-out" class="side-nav fixed leftside-navigation">
+                        <li class="user-details cyan darken-2">
+                            <div class="row">
+                                <div class="col col s6 m5 l7">
+                                    <output id="fotoUser2"></output>
+                                </div>
+                                <div class="col col s8 m8 l8">
+                                    <p class="white-text" id="name2"></p>
+
+                                    <p class="white-text" id="role2"></p>
+                                </div>
+                            </div>
+                        </li>
+                        <div class="collection">
+                                <a href="/sistem_facturacion/Principal/principal" onclick="" id="enlace1" class="collection-item">Inicio</a>
+
+                                <a href="/sistem_facturacion/Usuarios/usuarios" onclick="" id="enlace2" class="collection-item">Usuarios</a>
+
+                                <a href="/sistem_facturacion/Cajas/cajas" onclick="" id="enlace3" class="collection-item">cajas</a>
+                        </div>
+                    </ul>
+                </aside>
+            </div>
+        </div>
+    </div>

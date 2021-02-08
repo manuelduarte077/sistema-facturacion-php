@@ -1,0 +1,120 @@
+<div class="container2">
+    <form method="post" id="validate" class="registrarProducto">
+        <div class="modal-content">
+            <center>
+                <h5>Registro de producto</h5>
+            </center>
+            <div class="row">
+                <div class="col s9 m4">
+                    <div class="card ">
+                        <div class="card-content white-text">
+                            <center>
+                                <span class="card-title blue-grey-text  ">Imagen</span>
+                                <output id="productoCompraImg">
+
+                                </output>
+                            </center>
+                        </div>
+                        <div class="card-action">
+                            <center>
+                                <div id="barcode"></div>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="Descripcion" id="Descripcion" placeholder="Descripcion" required>
+                            <label class="error" for="Descripcion">Descripcion</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="Precio" id="Precio" placeholder="Precio" required>
+                            <label class="error" for="Precio">Precio</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="Departamento" id="Departamento" placeholder="Departamento"
+                                required>
+                            <label class="error" for="Departamento">Departamento</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="Categoria" id="Categoria" placeholder="Categoria" required>
+                            <label class="error" for="Categoria">Categoria</label>
+                        </div>
+                        <div class="hidenn">
+                            <input type="text" required />
+                        </div>
+                        <div class="input-field col s4">
+                            <button type="submit" onclick="producto.Registrar();"
+                                class="waves-effect waves-light btn-small grey darken-3">Registrar</button>
+                        </div>
+                    </div>
+                    <label id="messageProductos" class="red-text text-darken-4 "> </label>
+                </div>
+                <div id="ImprimirCompra">
+                    <div class="card ">
+                        <div class="card-content black-text">
+                            <center>
+                                <span id="productProveedor" class="card-title"></span>
+                            </center>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Producto
+                                        </th>
+                                        <th>
+                                            Precio
+                                        </th>
+                                        <th>
+                                            Cantidad
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <span id="productDescrip"></span>
+                                        </td>
+                                        <td>
+                                            <span id="productPrecio"></span>
+                                        </td>
+                                        <td>
+                                            <span id="productCantidad"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Credito
+                                        </th>
+                                        <th>
+                                            Importe
+                                        </th>
+                                        <th>
+                                            Fecha
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td id="productCredito">
+
+                                        </td>
+                                        <td>
+                                            <span id="productImporte"></span>
+                                        </td>
+                                        <td>
+                                            <span id="productFecha"></span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

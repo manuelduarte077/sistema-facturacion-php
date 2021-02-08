@@ -1,0 +1,54 @@
+<div class="container2">
+    <div class="row">
+        <h5>Registros de cajas</h5>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="row">
+                        <div class="input-field col s3">
+                            <input type="number" name="caja" min="1" max="12" value="1" id="caja">
+                        </div>
+                        <div class="input-field col s6">
+                            <button class="waves-effect waves-light btn-small grey darken-3" onclick="new Cajas().setCaja()">Registrar</button>
+                        </div>
+                    </div>
+                    <span id="mensajeCaja"></span>
+                </div>
+            </div>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='../Resource/images/iconos/keyboard.png' />Cajas
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Caja
+                                    </th>
+                                    <th>
+                                        Estado
+                                    </th>
+                                    <th>
+                                        Usuario
+                                    </th>
+                                    <th>
+                                        Asignada
+                                    </th>
+
+                                </tr>
+                            </thead> 
+                            <tbody id="dataCajaFilter">
+
+                            </tbody>
+                        </table>
+                        <div id="paginadorCaja">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

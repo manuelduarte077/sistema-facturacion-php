@@ -1,0 +1,158 @@
+<div class="container2">
+    <div class="row">
+        <div class="panel  panel-primary">
+            <div class="panel-heading">
+                <center>
+                    <h5 class="panel-title">Detalles de compra</h5>
+                </center>
+            </div>
+            <div class="row">
+                <div class="col s11 m3">
+                    <div class="card ">
+                        <div class="card-content white-text">
+                            <center>
+                                <span class="card-title blue-grey-text  ">Imagen</span>
+                                <output id="imageDetalles">
+                                    <img class=" responsive-img" src="../Resource/images/fotos/compras/default.png" />
+                                </output>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s11 m9">
+                    <div id="ImprimirCompra">
+                        <div class="card ">
+                            <div class="card-content black-text">
+                                <center>
+                                    <span id="dProveedor" class="card-title"></span>
+                                </center>
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Producto
+                                            </th>
+                                            <th>
+                                                Precio
+                                            </th>
+                                            <th>
+                                                Cantidad
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span id="dProducto"></span>
+                                            </td>
+                                            <td>
+                                                <span id="dPrecio"></span>
+                                            </td>
+                                            <td>
+                                                <span id="dCantidad"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Credito
+                                            </th>
+                                            <th>
+                                                Importe
+                                            </th>
+                                            <th>
+                                                Fecha
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <span id="dCredito"></span>
+                                            </td>
+                                            <td>
+                                                <span id="dImporte"></span>
+                                            </td>
+                                            <td>
+                                                <span id="dFecha"></span>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <label id="detallesMessage" class="red-text text-darken-4 "></label>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <a class="waves-effect waves-light orange darken-2 btn-small" onclick="printThisDiv('ImprimirCompra')">Imprimir</a>
+                        </div>
+                        <div class="input-field col s4">
+                            <button id="comprar" class="waves-effect waves-light btn-small grey darken-3">Aceptar</button>
+                        </div>
+                        <div id="btnTicket" class="input-field col s4">
+                            <a class="waves-effect waves-light orange darken-2 btn-small" onclick="printThisDiv('tickets')">Ticket</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div id="tickets" class="col s12 m11">
+                            <center>
+                                <h5>Ticket de:PDHN</h5><br />
+                            </center>
+                            <ul class="collapsible">
+                                <li>
+                                    <div class="collapsible-header">
+                                        <img class='responsive' src='../Resource/images/iconos/Proveedores2.png' /><label id="proveedorNombre"></label>
+                                    </div>
+                                    <div class="collapsible-bod">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        Deuda
+                                                    </th>
+                                                    <th>
+                                                        Fecha
+                                                    </th>
+                                                    <th>
+                                                        Pago
+                                                    </th>
+                                                    <th>
+                                                        Fecha
+                                                    </th>
+                                                    <th>
+                                                        Ticket
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <p id="deuda"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="fechadeuda"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="pago"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="fechapago"></p>
+                                                    </td>
+                                                    <td>
+                                                        <p id="ticket"></p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

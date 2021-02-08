@@ -1,0 +1,134 @@
+<div class="container2">
+    <form method="post" id="validate" enctype="multipart/form-data">
+        <div class="row">
+            <div class="panel  panel-primary">
+                <div class="panel-heading">
+                    <center>
+                        <h5 class="panel-title">Detalles del producto</h5>
+                    </center>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m3">
+                    <div class="card ">
+                        <div class="card-content white-text">
+                            <center>
+                                <span class="card-title blue-grey-text  ">Imagen</span>
+                                <output id="productoDetalles">
+                                   
+                                </output>
+                            </center>
+                            <div class="file-field input-field">
+                                <div class="btn-small waves-effect waves-light">
+                                    <span>Subir</span>
+                                    <input  accept="image/*" type="file" id="files">
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path " type="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-action">
+                            <table id="ImprimirCodigo">
+                                <thead>
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <span id="detalleDescripcion"></span>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <center>
+                                                <div id="barcodeDetalles"></div>
+                                            </center>
+                                        </td>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m9">
+                    <div id="ImprimirProducto">
+                        <div class="card ">
+                            <div class="card-content black-text">
+                                <center>
+                                    <span class="card-title">Informacion del producto</span>
+                                </center>
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <input type="text" name="descripcion" id="descripcionDetalles"
+                                                        placeholder="Descripcion" required>
+                                                    <label class="error" for="descripcionDetalles">Descripcion</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <input type="text" name="precio" onkeypress="return filterFloat(event,this);" id="precioDetalles" placeholder="Precio" required>
+                                                    <label class="error" for="precioDetalles">Precio</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <input type="text" name="descuento" onkeypress="return filterFloat(event,this);" id="descuentoDetalles" placeholder="Descuento" required>
+                                                    <label class="error" for="descuentoDetalles">Descuento</label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <input type="text" name="departamento" id="depatamentoDetalles"
+                                                        placeholder="Departamento" required>
+                                                    <label class="error" for="depatamentoDetalles">Departamento</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <input type="text" name="categoria" id="categoriaDetalles" placeholder="Categoria" required>
+                                                    <label class="error" for="categoriaDetalles">Categoria</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-field col s12">
+                                                    <div class="row">
+                                                        <label>Fecha</label>
+                                                    </div>
+                                                    <div class="row">
+                                                        <input type="text" id="fechaDetalles" disabled>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <label id="messageDetalles" class="red-text text-darken-4 "></label>
+                    <div class="row">
+                        <div class="input-field col s4">
+                            <a class="waves-effect waves-light orange darken-2 btn-small"
+                                onclick="printThisDiv('ImprimirProducto')">Producto</a>
+                        </div>
+                        <div class="input-field col s4">
+                            <a class="waves-effect waves-light grey darken-3 btn-small"
+                                onclick="printThisDiv('ImprimirCodigo')">Codigo</a>
+                        </div>
+                        <div class="input-field col s4">
+                            <button type="submit"
+                                class="waves-effect waves-light btn-small grey darken-3" onclick="producto.actualizarProducto()">Actualizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

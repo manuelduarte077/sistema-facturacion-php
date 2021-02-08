@@ -1,0 +1,136 @@
+<div class="container2">
+    <h5>Usuarios</h5>
+    <div class="row">
+        <div class="input-field col s0">
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Registrar</a>
+        </div>
+        <div class="input-field col s6">
+            <input placeholder="Buscar usuario" id="filtrarUser" type="text" onKeyUp="getUsers(1)">
+            <label for="filtrar">Buscar usuario</label>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Foto
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Usuario
+                </th>
+                <th>
+                    Roles
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
+        </thead>
+        <tbody id="resultUser"></tbody>
+    </table>
+    <div id="paginador">
+
+    </div>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal modal-fixed-footer">
+        <form class="col s12" id="validate" enctype="multipart/form-data" method="POST">
+            <div class="modal-content">
+                <center>
+                    <h5>Registrar usuarios</h5>
+                </center>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card ">
+                            <div class="card-content white-text">
+                                <center>
+                                    <span class="card-title blue-grey-text  ">Foto o imagen</span>
+                                    <output id="fotos"></output>
+                                </center>
+                            </div>
+                            <div class="card-action">
+                                <center>
+                                    <a>
+                                        <div class="file-field input-field">
+                                            <div class="btn waves-effect waves-light">
+                                                <span>Subir</span>
+                                                <input accept="image/*" type="file" id="files" name="files">
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path " type="text">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                    <a>Foto o Imagen</a>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Nombre" name="nombre" id="nombre" type="text" class="validate" required>
+                            <label class="error" for="nombre">Nombre</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Apellido" name="apellido" id="apellido" type="text" class="validate" required>
+                            <label class="error" for="apellido">Apellido</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="NID" name="nid" id="nid" type="text" class="validate" required>
+                            <label class="error" for="nid">NID</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Nº Telefono" name="telefono" id="telefono" type="number" class="validate" required>
+                            <label class="error" for="telefono">Nº Telefono</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Email" id="email" name="email" class="validate" type="email" required>
+                            <label for="email" class="error">Email</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="Password" type="password" name="password" id="password" class="validate " minlength="6" maxlength="20"
+                                required />
+                            <label class="error" for="password">Contraseña</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input placeholder="Usuario" type="text" name="usuario" id="usuario" class="validate " required />
+                            <label class="error" for="usuario">Usuario</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <select id='roles'>
+
+                            </select>
+                            <label>Tipo de roles</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <label id="registerMessage" class="text-left Message"></label>
+                <button id="registerClose" class="waves-effect waves-light btn">Cancelar</button>
+                <button id="registerUser" class="waves-effect waves-light btn">Registra</button>
+            </div>
+        </form>
+    </div>
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4>Esta seguro de eliminar el usuario</h4>
+            <p id="userName"></p>
+        </div>
+        <div class="modal-footer">
+            <label id="deteUserMessage" class="text-left Message"></label>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancelar</a>
+            <a href="#!" id="deleteUser" class="waves-effect waves-green btn-flat">Aceptar</a>
+        </div>
+    </div>
+</div>

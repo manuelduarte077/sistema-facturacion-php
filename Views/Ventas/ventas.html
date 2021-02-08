@@ -1,0 +1,119 @@
+<div class="container2">
+    <div class="row">
+        <div class="row">
+            <div class="col s12 m4">
+                <div class="card">
+                    <div class="card-content">
+                        <ul class="collection with-header">
+                            <li class="collection-item">
+                                <span>Opciones de ventas <span/>
+                            </li>
+                            <li class="collection-item">
+                                <table class="table">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                Monto
+                                                <p id="vtMonto"></p>
+                                                <input type="hidden" id="vtImporte" name="vtImporte" />
+                                            </td>
+                                            <td>
+                                                Deuda
+                                                <p id="vtDeuda"> </p>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </li>
+                            <li class="collection-item">
+                                <div class="row">
+                                    <div class="col s10">
+                                        <label>
+                                            <input type="checkbox" id="tvCheckbox" class="filled-in checkbox" />
+                                            <span>Credito</span>
+                                        </label>
+                                    </div><br /><br />
+                                    <div class="input-field col s10">
+                                        <input name="nid" id="textNid" disabled>
+                                        <label for="nid">NID</label>
+                                    </div>
+                                    <div class="input-field col s10">
+                                        <table class="table">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        Su cambio
+                                                        <p id="vtCambio"></p>
+                                                        <input type="hidden" name="cambio" id="textCambio">
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="input-field col s10">
+                                        <input type="text" id="vtPagos" name="pago"
+                                            onkeypress="return new Ventas().pagos(event,this);">
+                                        <label for="vtPagos">Pago</label>
+                                    </div>
+                                    <div class="input-field col s10">
+                                        <button type="submit" class="waves-effect waves-light btn-small">Cobrar</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m8">
+                <div class="card">
+                    <div class="card-content">
+                        <ul class="collection with-header">
+                            <li class="collection-header">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input type="text" id="searchCode" placeholder="Buscar producto">
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <button type="submit" onclick="new Ventas().SearchProducto()"
+                                                    class="waves-effect waves-light btn-small">Buscar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="collection-item">
+                                <img class='responsive'
+                                    src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Shopping_cart2.png' />
+                            </li>
+                            <li class="collection-item">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Descripcion
+                                            </th>
+                                            <th>
+                                                Cantidad
+                                            </th>
+                                            <th>
+                                                Precio
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="tempoVenta">
+
+                                    </tbody>
+                                </table>
+                                <div id="tempoVentaPD">
+
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

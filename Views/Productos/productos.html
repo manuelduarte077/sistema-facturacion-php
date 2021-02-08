@@ -1,0 +1,54 @@
+<div class="container2">
+    <div class="row">
+        <h5>Registros de productos</h5>
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <form>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input type="text" onKeyUp="getCompraTempo(1);" id="searchComprasPD" placeholder="Buscar producto">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <a class="waves-effect waves-light btn-small grey darken-3">Export</a>
+                |
+                <a href="inventario" class="waves-effect waves-light btn-small grey darken-3">Inventario</a>
+            </div>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='../Resource/images/iconos/Shopping_cart2.png' />Compras
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Imagen
+                                    </th>
+                                    <th>
+                                        Descripcion
+                                    </th>
+                                    <th>
+                                        Precio
+                                    </th>
+                                    <th>
+                                        Opciones
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="productoCompras">
+                                
+                            </tbody>
+                        </table>
+                        <div id="productoComprasPD">
+                          
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

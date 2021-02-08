@@ -1,0 +1,127 @@
+<div class="container2">
+    <div class="modal-content">
+        <center>
+            <h5>Reportes proveedor</h5>
+        </center>
+        <div class="row">
+            <div class="col s3 m3">
+                <div class="card ">
+                    <div class="card-content white-text">
+                        <center>
+                            <span class="card-title blue-grey-text  ">Foto</span>
+                            <output id="proveedorReporte">
+
+                            </output>
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="col s6 m6">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                Proveedor
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p id="proveedorNombre"></p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col s6 m6">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form class="col s12" id="validate" method="POST">
+                                    <div class="input-field col s12">
+                                        <div class="row">
+                                            <div class="input-field col s6">
+                                                <input type="text" id="pagos" placeholder="Monto a pagar" class="validate" required>
+                                                <label class="error" >Pago</label>
+                                            </div>
+                                            <div class="input-field col s6">
+                                                <button type="submit" onclick="return proveedores.setPagos()" class="waves-effect waves-light btn-small light-green darken-3 ">Pagar</button>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <label id="pagoProveedor" class="text-left Message"></label>
+                                        </div>
+                                    </div>
+                                </form>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <a class="waves-effect waves-light orange darken-2 btn-small" onclick="printThisDiv('imprimirticket')">Ticket</a>
+            <span>Deuda: <span  class="green-text text-darken-3" id="deudas"></span></span>
+           
+            <div id="imprimirticket">
+                <center>
+                    <h5>Ticket de:PDHN</h5>
+                </center>
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header">
+                            <img class='responsive' src='http://localhost/PDHN/Sistem/Resource/images/iconos/Proveedores2.png' /><label style="font-size: 15px" id="proveedorNombres"></label>
+                        </div>
+                        <div class="collapsible-bod">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            Deuda
+                                        </th>
+                                        <th>
+                                            Fecha Deuda
+                                        </th>
+                                        <th>
+                                            Pago
+                                        </th>
+                                        <th>
+                                            Fecha Pago
+                                        </th>
+                                        <th>
+                                            Ticket
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <p id="deuda"></p>
+                                        </td>
+                                        <td>
+                                            <p id="fechadeuda"></p>
+                                        </td>
+                                        <td>
+                                            <p id="pago"></p>
+                                        </td>
+                                        <td>
+                                            <p id="fechapago"></p>
+                                        </td>
+                                        <td>
+                                            <p id="ticket"></p>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <label id="reporteProveedorMessage" class="text-left Message"></label>
+        </div>
+    </div>
+</div>
