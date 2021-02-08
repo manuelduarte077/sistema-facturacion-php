@@ -1,8 +1,10 @@
 <?php
-class Conexion 
+
+class Conexion
 {
-    function __construct(){
-        $this->db = new QueryManager("root","","sistem_facturacion");
+    function __construct()
+    {
+        $this->db = new QueryManager("root", "", "sistem_facturacion");
     }
 }
 

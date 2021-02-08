@@ -2,6 +2,7 @@ class Principal {
     constructor() {
 
     }
+
     linkPrincipal(link) {
         let url = "";
         let cadena = link.split("/");

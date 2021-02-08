@@ -1,21 +1,22 @@
-class Ventas{
+class Ventas {
 
-    SearchProducto(){
+    SearchProducto() {
         $.post(
             URL + "Ventas/SearchProducto",
-            { searchCode: $("#searchCode").val()},
+            {searchCode: $("#searchCode").val()},
             (response) => {
                 console.log(response);
                 if (response == 0) {
-                    this.GetProductos(1); 
-                 }
+                    this.GetProductos(1);
+                }
             }
         );
     }
-    GetProductos(page){
+
+    GetProductos(page) {
         $.post(
             URL + "Ventas/GetProductos",
-            {page: page },
+            {page: page},
             (response) => {
                 try {
                     let item = JSON.parse(response);
@@ -27,13 +28,14 @@ class Ventas{
                     $("#tempoVentaPD").html(response);
                 }
                 console.log(response);
-              
+
             }
         );
     }
-    pagos(evt, input){
-        if (evt != null){
-            if (filterFloat(evt, input)){
+
+    pagos(evt, input) {
+        if (evt != null) {
+            if (filterFloat(evt, input)) {
                 var importe = parseFloat($("#vtImporte").val());
                 var key = window.Event ? evt.which : evt.keyCode;
                 var chark = String.fromCharCode(key);
@@ -41,7 +43,7 @@ class Ventas{
                 var pago = parseFloat(tempValue);
                 var deuda = importe - pago;
                 $("#vtDeuda").text("$" + numberDecimales(deuda));
-                if (pago > importe){
+                if (pago > importe) {
                     var cambio = pago - importe;
                     $("#vtCambio").text("$" + numberDecimales(cambio));
                     $("#vtDeuda").text("$0.0000000");
@@ -49,16 +51,16 @@ class Ventas{
                     $("#tvCheckbox").attr("checked", false);
                     $("#textNid").val("")
                     $("#textNid").prop("disabled", "disabled");
-                }else{
+                } else {
                     $("#vtCambio").text("$0.0000000");
                     $("#tvCheckbox").prop("disabled", false);
                     $("#textNid").removeAttr("disabled");
                 }
                 return true;
-            }else{
+            } else {
                 return false;
             }
-        }else{
+        } else {
             $("#vtDeuda").text("$0.0000000");
         }
     }

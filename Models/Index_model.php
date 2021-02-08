@@ -1,24 +1,28 @@
 <?php
+
 class Index_model extends Conexion
 {
-    function __construct(){
+    function __construct()
+    {
         parent::__construct();
         date_default_timezone_set('America/Tegucigalpa');
     }
-    function userLogin($email,$password,$model,$model1){
+
+    function userLogin($email, $password, $model, $model1)
+    {
         $where = " WHERE Email = :Email";
         $param = array('Email' => $email);
-        $response = $this->db->select1("*",'usuarios',$where,$param);
+        $response = $this->db->select1("*", 'usuarios', $where, $param);
         if (is_array($response)) {
             $response = $response['results'];
-           // echo var_dump($response);
-            if (0 != count($response)){
+            // echo var_dump($response);
+            if (0 != count($response)) {
                 $where = " WHERE Estado = :Estado AND Asignada = :Asignada";
                 $param = array('Estado' => true,
-                               'Asignada' => false);
-                $cajas = $this->db->select1("*",'cajas',$where,$param);               
-                if (password_verify($password,$response[0]["Password"])) {
-                    if("Admin" == $response[0]["Roles"]){
+                    'Asignada' => false);
+                $cajas = $this->db->select1("*", 'cajas', $where, $param);
+                if (password_verify($password, $response[0]["Password"])) {
+                    if ("Admin" == $response[0]["Roles"]) {
                         $this->db->pdo->beginTransaction();
                         $model->IdUsuario = $response[0]["IdUsuario"];
                         $model->Nombre = $response[0]["Nombre"];
@@ -48,14 +52,14 @@ class Index_model extends Conexion
                             "IdCaja" => 0,
                             "Caja" => 0,
                         );
-                        Session::setSession("User",$data);
+                        Session::setSession("User", $data);
                         return $data;
                         //return var_dump($model);
-                    }else{
+                    } else {
                         $this->db->pdo->beginTransaction();
                         $cajas = $cajas['results'];
                         $cajas = reset($cajas);
-                       
+
                         $model->IdUsuario = $response[0]["IdUsuario"];
                         $model->Nombre = $response[0]["Nombre"];
                         $model->Apellido = $response[0]["Apellido"];
@@ -78,7 +82,7 @@ class Index_model extends Conexion
                         $model1->Asignada = true;
                         $model1->Usuario = $response[0]["Email"];
 
-                        $query =  "UPDATE cajas SET Caja = :Caja,Estado = :Estado,Asignada = :Asignada,Usuario = :Usuario WHERE IdCaja = ".$cajas["IdCaja"];
+                        $query = "UPDATE cajas SET Caja = :Caja,Estado = :Estado,Asignada = :Asignada,Usuario = :Usuario WHERE IdCaja = " . $cajas["IdCaja"];
 
                         $sth = $this->db->pdo->prepare($query);
                         $sth->execute((array)$model1);
@@ -95,23 +99,23 @@ class Index_model extends Conexion
                             "IdCaja" => $cajas["IdCaja"],
                             "Caja" => $cajas["Caja"],
                         );
-                        Session::setSession("User",$data);
+                        Session::setSession("User", $data);
                         return $data;
                     }
-                   
+
                 } else {
                     $data = array(
                         "IdUsuario" => 0,
                     );
                     return $data;
                 }
-            }else{
+            } else {
                 return "El email no esta registrado";
             }
         } else {
-            return  $response;
-        } 
-      
+            return $response;
+        }
+
     }
 }
 

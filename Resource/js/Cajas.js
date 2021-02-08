@@ -1,25 +1,27 @@
-class Cajas{
-    constructor(){
+class Cajas {
+    constructor() {
 
     }
-    setCaja(){
+
+    setCaja() {
         $.post(
             URL + "Cajas/setCaja",
-            { caja: $("#caja").val()},
-            (response) =>{
-                if (response == 0){
+            {caja: $("#caja").val()},
+            (response) => {
+                if (response == 0) {
 
-                }else{
+                } else {
                     $("#mensajeCaja").html(response);
                 }
             }
         );
     }
-    getCajas(page){
+
+    getCajas(page) {
         $.post(
             URL + "Cajas/getCajas",
-            {page: page },
-            (response) =>{
+            {page: page},
+            (response) => {
                 console.log(response);
                 try {
                     let item = JSON.parse(response);
@@ -31,11 +33,12 @@ class Cajas{
             }
         );
     }
-    updateState(idcaja,state){
+
+    updateState(idcaja, state) {
         $.post(
             URL + "Cajas/updateState",
-            {idcaja: idcaja,state:state },
-            (response) =>{
+            {idcaja: idcaja, state: state},
+            (response) => {
                 console.log(response);
                 this.getCajas(1);
             }

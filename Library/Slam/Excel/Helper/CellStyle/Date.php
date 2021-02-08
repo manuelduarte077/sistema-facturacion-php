@@ -6,6 +6,9 @@ namespace Slam\Excel\Helper\CellStyle;
 
 use Slam\Excel\Helper\CellStyleInterface;
 use Slam\Excel\Pear\Writer\Format;
+use function array_reverse;
+use function explode;
+use function implode;
 
 final class Date implements CellStyleInterface
 {
@@ -15,7 +18,7 @@ final class Date implements CellStyleInterface
             return $value;
         }
 
-        return \implode('/', \array_reverse(\explode('-', $value)));
+        return implode('/', array_reverse(explode('-', $value)));
     }
 
     public function styleCell(Format $format): void

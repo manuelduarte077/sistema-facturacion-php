@@ -3,6 +3,13 @@
 namespace Slam\Excel\Pear\Writer;
 
 use Slam\Excel;
+use function method_exists;
+use function pack;
+use function preg_match;
+use function str_replace;
+use function strlen;
+use function strtolower;
+use function ucwords;
 
 /**
  * Class for generating Excel XF records (formats).
@@ -251,58 +258,58 @@ class Format
      * Constructor.
      *
      *
-     * @param int   $index      the XF index for the format
+     * @param int $index the XF index for the format
      * @param array $properties array with properties to be set on initialization
      */
-    public function __construct($index = 0, $properties =  [])
+    public function __construct($index = 0, $properties = [])
     {
-        $this->_xf_index       = $index;
-        $this->font_index      = 0;
-        $this->_font_name      = 'Arial';
-        $this->_size           = 10;
-        $this->_bold           = 0x0190;
-        $this->_italic         = 0;
-        $this->_color          = 0x7FFF;
-        $this->_underline      = 0;
+        $this->_xf_index = $index;
+        $this->font_index = 0;
+        $this->_font_name = 'Arial';
+        $this->_size = 10;
+        $this->_bold = 0x0190;
+        $this->_italic = 0;
+        $this->_color = 0x7FFF;
+        $this->_underline = 0;
         $this->_font_strikeout = 0;
-        $this->_font_outline   = 0;
-        $this->_font_shadow    = 0;
-        $this->_font_script    = 0;
-        $this->_font_family    = 0;
-        $this->_font_charset   = 0;
+        $this->_font_outline = 0;
+        $this->_font_shadow = 0;
+        $this->_font_script = 0;
+        $this->_font_family = 0;
+        $this->_font_charset = 0;
 
-        $this->_num_format     = 0;
+        $this->_num_format = 0;
 
-        $this->_hidden         = 0;
-        $this->_locked         = 0;
+        $this->_hidden = 0;
+        $this->_locked = 0;
 
-        $this->_text_h_align   = 0;
-        $this->_text_wrap      = 0;
-        $this->_text_v_align   = 2;
-        $this->_text_justlast  = 0;
-        $this->_rotation       = 0;
+        $this->_text_h_align = 0;
+        $this->_text_wrap = 0;
+        $this->_text_v_align = 2;
+        $this->_text_justlast = 0;
+        $this->_rotation = 0;
 
-        $this->_fg_color       = 0x40;
-        $this->_bg_color       = 0x41;
+        $this->_fg_color = 0x40;
+        $this->_bg_color = 0x41;
 
-        $this->_pattern        = 0;
+        $this->_pattern = 0;
 
-        $this->_bottom         = 0;
-        $this->_top            = 0;
-        $this->_left           = 0;
-        $this->_right          = 0;
-        $this->_diag           = 0;
+        $this->_bottom = 0;
+        $this->_top = 0;
+        $this->_left = 0;
+        $this->_right = 0;
+        $this->_diag = 0;
 
-        $this->_bottom_color   = 0x40;
-        $this->_top_color      = 0x40;
-        $this->_left_color     = 0x40;
-        $this->_right_color    = 0x40;
-        $this->_diag_color     = 0x40;
+        $this->_bottom_color = 0x40;
+        $this->_top_color = 0x40;
+        $this->_left_color = 0x40;
+        $this->_right_color = 0x40;
+        $this->_diag_color = 0x40;
 
         // Set properties passed to Excel_Writer_Workbook::addFormat()
         foreach ($properties as $property => $value) {
-            if (\method_exists($this, 'set' . \ucwords($property))) {
-                $method_name = 'set' . \ucwords($property);
+            if (method_exists($this, 'set' . ucwords($property))) {
+                $method_name = 'set' . ucwords($property);
                 $this->{$method_name}($value);
             }
         }
@@ -321,28 +328,28 @@ class Format
         if ('style' == $style) {
             $style = 0xFFF5;
         } else {
-            $style   = $this->_locked;
-            $style  |= $this->_hidden << 1;
+            $style = $this->_locked;
+            $style |= $this->_hidden << 1;
         }
 
         // Flags to indicate if attributes have been set.
-        $atr_num     = (0 != $this->_num_format) ? 1 : 0;
-        $atr_fnt     = (0 != $this->font_index) ? 1 : 0;
-        $atr_alc     = ($this->_text_wrap) ? 1 : 0;
-        $atr_bdr     = ($this->_bottom   ||
-                        $this->_top      ||
-                        $this->_left     ||
-                        $this->_right) ? 1 : 0;
-        $atr_pat     = ((0x40 != $this->_fg_color) ||
-                        (0x41 != $this->_bg_color) ||
-                        $this->_pattern) ? 1 : 0;
-        $atr_prot    = $this->_locked | $this->_hidden;
+        $atr_num = (0 != $this->_num_format) ? 1 : 0;
+        $atr_fnt = (0 != $this->font_index) ? 1 : 0;
+        $atr_alc = ($this->_text_wrap) ? 1 : 0;
+        $atr_bdr = ($this->_bottom ||
+            $this->_top ||
+            $this->_left ||
+            $this->_right) ? 1 : 0;
+        $atr_pat = ((0x40 != $this->_fg_color) ||
+            (0x41 != $this->_bg_color) ||
+            $this->_pattern) ? 1 : 0;
+        $atr_prot = $this->_locked | $this->_hidden;
 
         // Zero the default border colour if the border has not been set.
         if (0 == $this->_bottom) {
             $this->_bottom_color = 0;
         }
-        if (0  == $this->_top) {
+        if (0 == $this->_top) {
             $this->_top_color = 0;
         }
         if (0 == $this->_right) {
@@ -355,43 +362,43 @@ class Format
             $this->_diag_color = 0;
         }
 
-        $record         = 0x00E0;              // Record identifier
-        $length         = 0x0010;              // Number of bytes to follow
+        $record = 0x00E0;              // Record identifier
+        $length = 0x0010;              // Number of bytes to follow
 
-        $ifnt           = $this->font_index;   // Index to FONT record
-        $ifmt           = $this->_num_format;  // Index to FORMAT record
+        $ifnt = $this->font_index;   // Index to FONT record
+        $ifmt = $this->_num_format;  // Index to FORMAT record
 
-        $align          = $this->_text_h_align;       // Alignment
-        $align         |= $this->_text_wrap     << 3;
-        $align         |= $this->_text_v_align  << 4;
-        $align         |= $this->_text_justlast << 7;
-        $align         |= $this->_rotation      << 8;
-        $align         |= $atr_num                << 10;
-        $align         |= $atr_fnt                << 11;
-        $align         |= $atr_alc                << 12;
-        $align         |= $atr_bdr                << 13;
-        $align         |= $atr_pat                << 14;
-        $align         |= $atr_prot               << 15;
+        $align = $this->_text_h_align;       // Alignment
+        $align |= $this->_text_wrap << 3;
+        $align |= $this->_text_v_align << 4;
+        $align |= $this->_text_justlast << 7;
+        $align |= $this->_rotation << 8;
+        $align |= $atr_num << 10;
+        $align |= $atr_fnt << 11;
+        $align |= $atr_alc << 12;
+        $align |= $atr_bdr << 13;
+        $align |= $atr_pat << 14;
+        $align |= $atr_prot << 15;
 
-        $icv            = $this->_fg_color;       // fg and bg pattern colors
-        $icv           |= $this->_bg_color      << 7;
+        $icv = $this->_fg_color;       // fg and bg pattern colors
+        $icv |= $this->_bg_color << 7;
 
-        $fill           = $this->_pattern;        // Fill and border line style
-        $fill          |= $this->_bottom        << 6;
-        $fill          |= $this->_bottom_color  << 9;
+        $fill = $this->_pattern;        // Fill and border line style
+        $fill |= $this->_bottom << 6;
+        $fill |= $this->_bottom_color << 9;
 
-        $border1        = $this->_top;            // Border line style and color
-        $border1       |= $this->_left          << 3;
-        $border1       |= $this->_right         << 6;
-        $border1       |= $this->_top_color     << 9;
+        $border1 = $this->_top;            // Border line style and color
+        $border1 |= $this->_left << 3;
+        $border1 |= $this->_right << 6;
+        $border1 |= $this->_top_color << 9;
 
-        $border2        = $this->_left_color;     // Border color
-        $border2       |= $this->_right_color   << 7;
+        $border2 = $this->_left_color;     // Border color
+        $border2 |= $this->_right_color << 7;
 
-        $header      = \pack('vv',       $record, $length);
-        $data        = \pack('vvvvvvvv', $ifnt, $ifmt, $style, $align,
-                                        $icv, $fill,
-                                        $border1, $border2);
+        $header = pack('vv', $record, $length);
+        $data = pack('vvvvvvvv', $ifnt, $ifmt, $style, $align,
+            $icv, $fill,
+            $border1, $border2);
 
         return $header . $data;
     }
@@ -403,36 +410,36 @@ class Format
      */
     public function getFont()
     {
-        $dyHeight   = $this->_size * 20;    // Height of font (1/20 of a point)
-        $icv        = $this->_color;        // Index to color palette
-        $bls        = $this->_bold;         // Bold style
-        $sss        = $this->_font_script;  // Superscript/subscript
-        $uls        = $this->_underline;    // Underline
-        $bFamily    = $this->_font_family;  // Font family
-        $bCharSet   = $this->_font_charset; // Character set
+        $dyHeight = $this->_size * 20;    // Height of font (1/20 of a point)
+        $icv = $this->_color;        // Index to color palette
+        $bls = $this->_bold;         // Bold style
+        $sss = $this->_font_script;  // Superscript/subscript
+        $uls = $this->_underline;    // Underline
+        $bFamily = $this->_font_family;  // Font family
+        $bCharSet = $this->_font_charset; // Character set
 
-        $cch        = \strlen($this->_font_name); // Length of font name
-        $record     = 0x31;                      // Record identifier
-        $length     = 0x0F + $cch;            // Record length
-        $reserved   = 0x00;                // Reserved
-        $grbit      = 0x00;                // Font attributes
+        $cch = strlen($this->_font_name); // Length of font name
+        $record = 0x31;                      // Record identifier
+        $length = 0x0F + $cch;            // Record length
+        $reserved = 0x00;                // Reserved
+        $grbit = 0x00;                // Font attributes
         if ($this->_italic) {
-            $grbit     |= 0x02;
+            $grbit |= 0x02;
         }
         if ($this->_font_strikeout) {
-            $grbit     |= 0x08;
+            $grbit |= 0x08;
         }
         if ($this->_font_outline) {
-            $grbit     |= 0x10;
+            $grbit |= 0x10;
         }
         if ($this->_font_shadow) {
-            $grbit     |= 0x20;
+            $grbit |= 0x20;
         }
 
-        $header  = \pack('vv',         $record, $length);
-        $data    = \pack('vvvvvCCCCC', $dyHeight, $grbit, $icv, $bls,
-                                      $sss, $uls, $bFamily,
-                                      $bCharSet, $reserved, $cch);
+        $header = pack('vv', $record, $length);
+        $data = pack('vvvvvCCCCC', $dyHeight, $grbit, $icv, $bls,
+            $sss, $uls, $bFamily,
+            $bCharSet, $reserved, $cch);
 
         return $header . $data . $this->_font_name;
     }
@@ -449,12 +456,12 @@ class Format
      */
     public function getFontKey()
     {
-        $key  = "$this->_font_name$this->_size";
+        $key = "$this->_font_name$this->_size";
         $key .= "$this->_font_script$this->_underline";
         $key .= "$this->_font_strikeout$this->_bold$this->_font_outline";
         $key .= "$this->_font_family$this->_font_charset";
         $key .= "$this->_font_shadow$this->_color$this->_italic";
-        $key  = \str_replace(' ', '_', $key);
+        $key = str_replace(' ', '_', $key);
 
         return $key;
     }
@@ -482,24 +489,24 @@ class Format
     private function _getColor($name_color = null)
     {
         $colors = [
-            'aqua'    => 0x07,
-            'cyan'    => 0x07,
-            'black'   => 0x00,
-            'blue'    => 0x04,
-            'brown'   => 0x10,
+            'aqua' => 0x07,
+            'cyan' => 0x07,
+            'black' => 0x00,
+            'blue' => 0x04,
+            'brown' => 0x10,
             'magenta' => 0x06,
             'fuchsia' => 0x06,
-            'gray'    => 0x17,
-            'grey'    => 0x17,
-            'green'   => 0x11,
-            'lime'    => 0x03,
-            'navy'    => 0x12,
-            'orange'  => 0x35,
-            'purple'  => 0x14,
-            'red'     => 0x02,
-            'silver'  => 0x16,
-            'white'   => 0x01,
-            'yellow'  => 0x05,
+            'gray' => 0x17,
+            'grey' => 0x17,
+            'green' => 0x11,
+            'lime' => 0x03,
+            'navy' => 0x12,
+            'orange' => 0x35,
+            'purple' => 0x14,
+            'red' => 0x02,
+            'silver' => 0x16,
+            'white' => 0x01,
+            'yellow' => 0x05,
         ];
 
         // Return the default color, 0x7FFF, if undef,
@@ -513,7 +520,7 @@ class Format
         }
 
         // or the default color if string is unrecognised,
-        if (\preg_match('/\\D/', $name_color)) {
+        if (preg_match('/\\D/', $name_color)) {
             return 0x7FFF;
         }
 
@@ -546,17 +553,17 @@ class Format
      */
     public function setHAlign($location)
     {
-        $location = \strtolower((string) $location);
+        $location = strtolower((string)$location);
 
         $map = [
-            'left'          => 1,
-            'centre'        => 2,
-            'center'        => 2,
-            'right'         => 3,
-            'fill'          => 4,
-            'justify'       => 5,
-            'merge'         => 6,
-            'equal_space'   => 7,
+            'left' => 1,
+            'centre' => 2,
+            'center' => 2,
+            'right' => 3,
+            'fill' => 4,
+            'justify' => 5,
+            'merge' => 6,
+            'equal_space' => 7,
         ];
         if (isset($map[$location])) {
             $this->_text_h_align = $map[$location];
@@ -571,15 +578,15 @@ class Format
      */
     public function setVAlign($location)
     {
-        $location = \strtolower((string) $location);
+        $location = strtolower((string)$location);
 
         $map = [
-            'top'           => 0,
-            'vcentre'       => 1,
-            'vcenter'       => 1,
-            'bottom'        => 2,
-            'vjustify'      => 3,
-            'vequal_space'  => 4,
+            'top' => 0,
+            'vcentre' => 1,
+            'vcenter' => 1,
+            'bottom' => 2,
+            'vjustify' => 3,
+            'vequal_space' => 4,
         ];
         if (isset($map[$location])) {
             $this->_text_v_align = $map[$location];

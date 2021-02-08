@@ -3,6 +3,14 @@
 namespace Slam\Excel\Pear;
 
 use Slam\Excel\Exception;
+use function date;
+use function floor;
+use function gmmktime;
+use function is_resource;
+use function pack;
+use function pow;
+use function strlen;
+use function tmpfile;
 
 /**
  * Excel_OLE package base class.
@@ -14,20 +22,20 @@ use Slam\Excel\Exception;
  */
 class OLE
 {
-    const Excel_OLE_DATA_SIZE_SMALL     = 0x1000;
-    const Excel_OLE_LONG_INT_SIZE       = 4;
-    const Excel_OLE_PPS_SIZE            = 0x80;
-    const Excel_OLE_PPS_TYPE_DIR        = 1;
-    const Excel_OLE_PPS_TYPE_FILE       = 2;
-    const Excel_OLE_PPS_TYPE_ROOT       = 5;
+    const Excel_OLE_DATA_SIZE_SMALL = 0x1000;
+    const Excel_OLE_LONG_INT_SIZE = 4;
+    const Excel_OLE_PPS_SIZE = 0x80;
+    const Excel_OLE_PPS_TYPE_DIR = 1;
+    const Excel_OLE_PPS_TYPE_FILE = 2;
+    const Excel_OLE_PPS_TYPE_ROOT = 5;
 
     // For Unit Tests
     public static $gmmktime;
 
     public static function getTmpfile()
     {
-        $resource = \tmpfile();
-        if (! \is_resource($resource)) {
+        $resource = tmpfile();
+        if (!is_resource($resource)) {
             throw new Exception\RuntimeException('Can\'t create temporary file');
         }
 
@@ -46,7 +54,7 @@ class OLE
     public static function Asc2Ucs($ascii)
     {
         $rawname = '';
-        for ($i = 0; $i < \strlen($ascii); ++$i) {
+        for ($i = 0; $i < strlen($ascii); ++$i) {
             $rawname .= $ascii[$i] . "\x00";
         }
 
@@ -65,19 +73,19 @@ class OLE
      */
     public static function LocalDate2Excel_OLE($date = null)
     {
-        if (! isset($date)) {
+        if (!isset($date)) {
             return "\x00\x00\x00\x00\x00\x00\x00\x00";
         }
 
         // factor used for separating numbers into 4 bytes parts
-        $factor = \pow(2, 32);
+        $factor = pow(2, 32);
 
         // days from 1-1-1601 until the beggining of UNIX era
         $days = 134774;
         // calculate seconds
-        $gmmktime = \gmmktime(
-            \date('H', $date), \date('i', $date), \date('s', $date),
-            \date('m', $date), \date('d', $date), \date('Y', $date)
+        $gmmktime = gmmktime(
+            date('H', $date), date('i', $date), date('s', $date),
+            date('m', $date), date('d', $date), date('Y', $date)
         );
         if (isset(self::$gmmktime)) {
             $gmmktime = self::$gmmktime;
@@ -86,21 +94,21 @@ class OLE
         // multiply just to make MS happy
         $big_date *= 10000000;
 
-        $high_part = \floor($big_date / $factor);
+        $high_part = floor($big_date / $factor);
         // lower 4 bytes
-        $low_part = \floor((($big_date / $factor) - $high_part) * $factor);
+        $low_part = floor((($big_date / $factor) - $high_part) * $factor);
 
         // Make HEX string
         $res = '';
 
         for ($i = 0; $i < 4; ++$i) {
             $hex = $low_part % 0x100;
-            $res .= \pack('c', $hex);
+            $res .= pack('c', $hex);
             $low_part /= 0x100;
         }
         for ($i = 0; $i < 4; ++$i) {
             $hex = $high_part % 0x100;
-            $res .= \pack('c', $hex);
+            $res .= pack('c', $hex);
             $high_part /= 0x100;
         }
 

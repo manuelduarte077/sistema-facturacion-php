@@ -16,10 +16,10 @@ final class Column implements ColumnInterface
 
     public function __construct(string $key, string $heading, int $width, CellStyleInterface $cellStyle)
     {
-        $this->key          = $key;
-        $this->heading      = $heading;
-        $this->width        = $width;
-        $this->cellStyle    = $cellStyle;
+        $this->key = $key;
+        $this->heading = $heading;
+        $this->width = $width;
+        $this->cellStyle = $cellStyle;
     }
 
     public function getKey(): string

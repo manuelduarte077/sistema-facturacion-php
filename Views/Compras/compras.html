@@ -1,115 +1,120 @@
 <div class="container2">
-        <form id="validate" method="post" enctype="multipart/form-data">
-            <div class="modal-content">
-                <center>
-                    <h5>Compra de producto</h5>
-                </center>
-                <div class="row">
-                    <div class="col s9 m4">
-                        <div class="card ">
-                            <div class="card-content white-text">
-                                <center>
-                                    <span class="card-title blue-grey-text  ">Imagen</span>
-                                    <output id="imageCompras">
-                                        <img class=" responsive-img" src="../Resource/images/fotos/compras/default.png" />
-                                    </output>
-                                </center>
-                            </div>
-                            <div class="card-action">
-                                <a>
-                                    <div class="file-field input-field">
-                                        <div class="btn waves-effect waves-light">
-                                            <span>Subir</span>
-                                            <input accept="image/*" type="file" id="files">
-                                            <div class="file-path-wrapper">
-                                                <input class="file-path " type="text">
-                                            </div>
+    <form id="validate" method="post" enctype="multipart/form-data">
+        <div class="modal-content">
+            <center>
+                <h5>Compra de producto</h5>
+            </center>
+            <div class="row">
+                <div class="col s9 m4">
+                    <div class="card ">
+                        <div class="card-content white-text">
+                            <center>
+                                <span class="card-title blue-grey-text  ">Imagen</span>
+                                <output id="imageCompras">
+                                    <img class=" responsive-img" src="../Resource/images/fotos/compras/default.png"/>
+                                </output>
+                            </center>
+                        </div>
+                        <div class="card-action">
+                            <a>
+                                <div class="file-field input-field">
+                                    <div class="btn waves-effect waves-light">
+                                        <span>Subir</span>
+                                        <input accept="image/*" type="file" id="files">
+                                        <div class="file-path-wrapper">
+                                            <input class="file-path " type="text">
                                         </div>
-                                        <br />
                                     </div>
-                                </a>
-                                <center>
-                                    <a>Imagen</a>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input type="text" name="Descripcion" id="Descripcion" placeholder="Descripcion" required>
-                                <label class="error" for="Descripcion">Descripcion</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input type="number" min="1" value="1" name="Cantidad" id="Cantidad" placeholder="Cantidad" required>
-                                <label class="error" for="Cantidad">Cantidad</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input type="text" onkeypress="return filterFloat(event,this);" name="Precio" id="Precio" placeholder="Precio" required>
-                                <label class="error" for="Precio">Precio</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input type="text" name="Proveedor" id="Proveedor" placeholder="Proveedor" required disabled>
-                                <label class="error" for="Proveedor">Proveedor</label>
-                            </div>
-                            <div class="input-field col s3">
-                                <p>
-                                    <label>
-                                        <input type="checkbox" name="Credito" id="Credito"/>
-                                        <span>Credito</span>
-                                    </label>
-                                </p>
-                            </div>
-                            <div class="input-field col s4">
-                                <button type="submit" class="waves-effect waves-light btn-small grey darken-3" id="detallesCompras">Comprar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <label id="messageCompras" class="red-text text-darken-4 "> </label>
-            </div>
-        </form>
-        <div class="row">
-            <div id="test1" class="col s12">
-                <div class="row">
-                    <div class="input-field col s12">
-                        <div class="row">
-                           <input type="text" id="searchCompraPD" namer="searchCompraPD" placeholder="Buscar proveedores">
-                        </div>
-                    </div>
-                </div>
-                <ul class="collapsible">
-                        <li>
-                            <div class="collapsible-header">
-                                <img class='responsive' src='../Resource/images/iconos/Proveedores2.png' />Proveedores
-                            </div>
-                            <div class="collapsible-body">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>
-                                                Foto
-                                            </th>
-                                            <th>
-                                                Proveedore
-                                            </th>
-                                            <th>
-                                                Opciones
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="compraProveedores">
-        
-                                    </tbody>
-                                </table>
-                                <div id="compraPD">
-        
+                                    <br/>
                                 </div>
-                            </div>
-                        </li>
-                    </ul>
+                            </a>
+                            <center>
+                                <a>Imagen</a>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="Descripcion" id="Descripcion" placeholder="Descripcion" required>
+                            <label class="error" for="Descripcion">Descripcion</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="number" min="1" value="1" name="Cantidad" id="Cantidad" placeholder="Cantidad"
+                                   required>
+                            <label class="error" for="Cantidad">Cantidad</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" onkeypress="return filterFloat(event,this);" name="Precio" id="Precio"
+                                   placeholder="Precio" required>
+                            <label class="error" for="Precio">Precio</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="text" name="Proveedor" id="Proveedor" placeholder="Proveedor" required
+                                   disabled>
+                            <label class="error" for="Proveedor">Proveedor</label>
+                        </div>
+                        <div class="input-field col s3">
+                            <p>
+                                <label>
+                                    <input type="checkbox" name="Credito" id="Credito"/>
+                                    <span>Credito</span>
+                                </label>
+                            </p>
+                        </div>
+                        <div class="input-field col s4">
+                            <button type="submit" class="waves-effect waves-light btn-small grey darken-3"
+                                    id="detallesCompras">Comprar
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="modal-footer">
+            <label id="messageCompras" class="red-text text-darken-4 "> </label>
+        </div>
+    </form>
+    <div class="row">
+        <div id="test1" class="col s12">
+            <div class="row">
+                <div class="input-field col s12">
+                    <div class="row">
+                        <input type="text" id="searchCompraPD" namer="searchCompraPD" placeholder="Buscar proveedores">
+                    </div>
+                </div>
+            </div>
+            <ul class="collapsible">
+                <li>
+                    <div class="collapsible-header">
+                        <img class='responsive' src='../Resource/images/iconos/Proveedores2.png'/>Proveedores
+                    </div>
+                    <div class="collapsible-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>
+                                    Foto
+                                </th>
+                                <th>
+                                    Proveedore
+                                </th>
+                                <th>
+                                    Opciones
+                                </th>
+                            </tr>
+                            </thead>
+                            <tbody id="compraProveedores">
+
+                            </tbody>
+                        </table>
+                        <div id="compraPD">
+
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
+</div>

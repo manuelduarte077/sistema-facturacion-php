@@ -1,8 +1,9 @@
-class Uploadpicture{
+class Uploadpicture {
     constructor() {
-        
+
     }
-    archivo(evt,id) {
+
+    archivo(evt, id) {
         let files = evt.target.files; // FileList object
         let f = files[0];
         if (f.type.match('image.*')) {

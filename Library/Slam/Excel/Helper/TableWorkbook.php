@@ -5,11 +5,24 @@ declare(strict_types=1);
 namespace Slam\Excel\Helper;
 
 use Slam\Excel;
+use function array_keys;
+use function array_values;
+use function chr;
+use function count;
+use function end;
+use function get_class;
+use function mb_convert_encoding;
+use function mb_substr;
+use function reset;
+use function sprintf;
+use function str_replace;
+use function ucwords;
+use function uniqid;
 
 final class TableWorkbook extends Excel\Pear\Writer\Workbook
 {
-    const GREY_MEDIUM   = 43;
-    const GREY_LIGHT    = 42;
+    const GREY_MEDIUM = 43;
+    const GREY_LIGHT = 42;
 
     private $rowsPerSheet = 60000;
 
@@ -23,8 +36,8 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
     {
         parent::__construct($filename);
 
-        $this->setCustomColor(self::GREY_MEDIUM,    0xCC, 0xCC, 0xCC);
-        $this->setCustomColor(self::GREY_LIGHT,     0xE8, 0xE8, 0xE8);
+        $this->setCustomColor(self::GREY_MEDIUM, 0xCC, 0xCC, 0xCC);
+        $this->setCustomColor(self::GREY_LIGHT, 0xE8, 0xE8, 0xE8);
 
         $this->styleIdentity = new CellStyle\Text();
     }
@@ -47,18 +60,16 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
 
         static $indexCache = [];
 
-        if (! isset($indexCache[$index])) {
+        if (!isset($indexCache[$index])) {
             if ($index < 26) {
-                $indexCache[$index] = \chr(65 + $index);
+                $indexCache[$index] = chr(65 + $index);
             } elseif ($index < 702) {
-                $indexCache[$index] = \chr(64 + (int) ($index / 26))
-                    . \chr(65 + $index % 26)
-                ;
+                $indexCache[$index] = chr(64 + (int)($index / 26))
+                    . chr(65 + $index % 26);
             } else {
-                $indexCache[$index] = \chr(64 + (int) (($index - 26) / 676))
-                    . \chr(65 + (int) ((($index - 26) % 676) / 26))
-                    . \chr(65 + $index % 26)
-                ;
+                $indexCache[$index] = chr(64 + (int)(($index - 26) / 676))
+                    . chr(65 + (int)((($index - 26) % 676) / 26))
+                    . chr(65 + $index % 26);
             }
         }
 
@@ -76,7 +87,7 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
             ++$count;
 
             if ($table->getRowCurrent() >= $this->rowsPerSheet) {
-                $table = $table->splitTableOnNewWorksheet($this->addWorksheet(\uniqid()));
+                $table = $table->splitTableOnNewWorksheet($this->addWorksheet(uniqid()));
                 $tables[] = $table;
                 $this->writeTableHeading($table);
                 $headingRow = true;
@@ -91,17 +102,17 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
             $this->writeRow($table, $row);
         }
 
-        if (\count($tables) > 1) {
-            $table = \reset($tables);
+        if (count($tables) > 1) {
+            $table = reset($tables);
             $firstSheet = $table->getActiveSheet();
             // In Excel the maximum length for a sheet name is 30
-            $originalName = \mb_substr($firstSheet->name, 0, 21);
+            $originalName = mb_substr($firstSheet->name, 0, 21);
 
             $sheetCounter = 0;
-            $sheetTotal = \count($tables);
+            $sheetTotal = count($tables);
             foreach ($tables as $table) {
                 ++$sheetCounter;
-                $table->getActiveSheet()->name = \sprintf('%s (%s|%s)', $originalName, $sheetCounter, $sheetTotal);
+                $table->getActiveSheet()->name = sprintf('%s (%s|%s)', $originalName, $sheetCounter, $sheetTotal);
             }
         }
 
@@ -119,7 +130,7 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
 
         $table->setCount($count);
 
-        return \end($tables);
+        return end($tables);
     }
 
     private function writeTableHeading(Table $table): void
@@ -132,14 +143,14 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
     private function writeColumnsHeading(Table $table, array $row): void
     {
         $columnCollection = $table->getColumnCollection();
-        $columnKeys = \array_keys($row);
+        $columnKeys = array_keys($row);
         $this->generateFormats($table, $columnKeys, $columnCollection);
 
         $table->resetColumn();
         $titles = [];
         foreach ($columnKeys as $title) {
             $width = 10;
-            $newTitle = \ucwords(\str_replace('_', ' ', $title));
+            $newTitle = ucwords(str_replace('_', ' ', $title));
 
             if (isset($columnCollection) and isset($columnCollection[$title])) {
                 $width = $columnCollection[$title]->getWidth();
@@ -178,7 +189,7 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
             }
 
             $write = 'write';
-            if (\get_class($cellStyle) === \get_class($this->styleIdentity)) {
+            if (get_class($cellStyle) === get_class($this->styleIdentity)) {
                 $write = 'writeString';
             }
 
@@ -200,19 +211,19 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
     private function sanitize($value): string
     {
         static $sanitizeMap = [
-            '&amp;'     => '&',
-            '&lt;'      => '<',
-            '&gt;'      => '>',
-            '&apos;'    => "'",
-            '&quot;'    => '"',
+            '&amp;' => '&',
+            '&lt;' => '<',
+            '&gt;' => '>',
+            '&apos;' => "'",
+            '&quot;' => '"',
         ];
 
-        $value = \str_replace(
-            \array_keys($sanitizeMap),
-            \array_values($sanitizeMap),
+        $value = str_replace(
+            array_keys($sanitizeMap),
+            array_values($sanitizeMap),
             $value
         );
-        $value = \mb_convert_encoding($value, 'Windows-1252');
+        $value = mb_convert_encoding($value, 'Windows-1252');
 
         return $value;
     }
@@ -248,10 +259,10 @@ final class TableWorkbook extends Excel\Pear\Writer\Workbook
             }
 
             $this->formats[$key] = [
-                'cell_style'    => null,
-                'title'         => $header,
-                'zebra_dark'    => $zebraLight,
-                'zebra_light'   => $zebraDark,
+                'cell_style' => null,
+                'title' => $header,
+                'zebra_dark' => $zebraLight,
+                'zebra_light' => $zebraDark,
             ];
 
             $cellStyle = $this->styleIdentity;

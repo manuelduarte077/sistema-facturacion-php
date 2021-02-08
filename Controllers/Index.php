@@ -1,24 +1,30 @@
 <?php
+
 class Index extends Controllers
 {
-    public function __construct() {
+    public function __construct()
+    {
         parent::__construct();
     }
-    public function index(){
+
+    public function index()
+    {
         $user = $_SESSION["User"] ?? null;
 
         if (null != $user) {
-            header("Location:".URL."Principal/principal");
+            header("Location:" . URL . "Principal/principal");
         } else {
-            $this->view->render($this,"index",null);
-        }   
-       
+            $this->view->render($this, "index", null);
+        }
+
     }
-    public function userLogin(){
-        if(isset($_POST["email"])){
+
+    public function userLogin()
+    {
+        if (isset($_POST["email"])) {
             if (!empty($_POST["password"])) {
-               if (6 <= strlen($_POST["password"])) {
-                    $data =  $this->model->userLogin(
+                if (6 <= strlen($_POST["password"])) {
+                    $data = $this->model->userLogin(
                         $_POST["email"],
                         $_POST["password"],
                         $this->TCajas_registros(array()),
@@ -29,16 +35,16 @@ class Index extends Controllers
                     } else {
                         echo $data;
                     }
-               } else {
-                  echo 2;
-               }   
+                } else {
+                    echo 2;
+                }
             } else {
                 echo 1;
             }
-            
-         /*  // echo password_hash($_POST["password"], PASSWORD_DEFAULT);
-            */
-            
+
+            /*  // echo password_hash($_POST["password"], PASSWORD_DEFAULT);
+               */
+
         }
     }
 }

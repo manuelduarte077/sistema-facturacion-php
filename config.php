@@ -1,4 +1,4 @@
-<?php 
+<?php
 const LBS = 'Library/';
 const VIEWS = 'Views/';
 define('DFT', 'Default/');

@@ -1,7 +1,9 @@
-<?php   
+<?php
+
 class Controllers extends Anonymous
 {
-    public function __construct() {
+    public function __construct()
+    {
         Session::star();
         date_default_timezone_set('America/Tegucigalpa');
         $this->view = new Views();
@@ -10,10 +12,12 @@ class Controllers extends Anonymous
         $this->export = new ExportData();
         $this->loadClassmodels();
     }
-    function loadClassmodels(){
-        $model = get_class($this).'_model';
-        $path = 'Models/'.$model.'.php';
-        if(file_exists($path)){
+
+    function loadClassmodels()
+    {
+        $model = get_class($this) . '_model';
+        $path = 'Models/' . $model . '.php';
+        if (file_exists($path)) {
             require $path;
             $this->model = new $model();
         }

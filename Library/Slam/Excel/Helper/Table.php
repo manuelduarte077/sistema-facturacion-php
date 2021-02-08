@@ -8,6 +8,7 @@ use Countable;
 use Iterator;
 use Slam\Excel\Exception;
 use Slam\Excel\Pear\Writer\Worksheet;
+use function max;
 
 final class Table implements Countable
 {
@@ -44,14 +45,12 @@ final class Table implements Countable
         $this->rowStart =
         $this->rowEnd =
         $this->rowCurrent =
-            $row
-        ;
+            $row;
 
         $this->columnStart =
         $this->columnEnd =
         $this->columnCurrent =
-            $column
-        ;
+            $column;
 
         $this->heading = $heading;
 
@@ -92,7 +91,7 @@ final class Table implements Countable
     {
         ++$this->rowCurrent;
 
-        $this->rowEnd = \max($this->rowEnd, $this->rowCurrent);
+        $this->rowEnd = max($this->rowEnd, $this->rowCurrent);
     }
 
     public function getColumnStart(): int
@@ -114,7 +113,7 @@ final class Table implements Countable
     {
         ++$this->columnCurrent;
 
-        $this->columnEnd = \max($this->columnEnd, $this->columnCurrent);
+        $this->columnEnd = max($this->columnEnd, $this->columnCurrent);
     }
 
     public function resetColumn(): void

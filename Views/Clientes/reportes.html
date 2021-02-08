@@ -19,57 +19,61 @@
             <div class="col s6 m6">
                 <table class="table">
                     <thead>
-                        <tr>
-                            <th>
-                                Nombre
-                            </th>
-                            <th>
-                                Apellido
-                            </th>
-                        </tr>
+                    <tr>
+                        <th>
+                            Nombre
+                        </th>
+                        <th>
+                            Apellido
+                        </th>
+                    </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>
-                                <p id="clienteNombre"></p>
-                            </td>
-                            <td>
-                                <p id="clienteApellido"></p>
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>
+                            <p id="clienteNombre"></p>
+                        </td>
+                        <td>
+                            <p id="clienteApellido"></p>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
             <div class="col s6 m6">
                 <table class="table">
                     <tbody>
-                        <tr>
-                            <td>
-                                <form class="col s12" id="validate" method="POST">
-                                    <div class="input-field col s12">
-                                        <div class="row">
-                                            <div class="input-field col s6">
-                                                <input type="text" id="pagos" placeholder="Monto a pagar" class="validate" required>
-                                                <label class="error" for="nombre">Pago</label>
-                                            </div>
-                                            <div class="input-field col s6">
-                                                <button type="submit" onclick="return cliente.setPagos()" class="waves-effect waves-light btn-small light-green darken-3 ">Cobrar</button>
-                                            </div>
+                    <tr>
+                        <td>
+                            <form class="col s12" id="validate" method="POST">
+                                <div class="input-field col s12">
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input type="text" id="pagos" placeholder="Monto a pagar" class="validate"
+                                                   required>
+                                            <label class="error" for="nombre">Pago</label>
                                         </div>
-                                        <div class="row">
-                                            <label id="pagoCliente" class="text-left Message"></label>
+                                        <div class="input-field col s6">
+                                            <button type="submit" onclick="return cliente.setPagos()"
+                                                    class="waves-effect waves-light btn-small light-green darken-3 ">
+                                                Cobrar
+                                            </button>
                                         </div>
                                     </div>
-                                </form>
-                            </td>
-                        </tr>
+                                    <div class="row">
+                                        <label id="pagoCliente" class="text-left Message"></label>
+                                    </div>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="row">
             <a class="waves-effect waves-light orange darken-2 btn-small" onclick="printThisDiv('imprimirticket')">Ticket</a>
-            <span>Deuda: <span  class="green-text text-darken-3" id="deudas"></span></span>
+            <span>Deuda: <span class="green-text text-darken-3" id="deudas"></span></span>
             <output id="creditoCliente">
 
             </output>
@@ -80,47 +84,49 @@
                 <ul class="collapsible">
                     <li>
                         <div class="collapsible-header">
-                            <img class='responsive' src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Clientes2.png' /><label style="font-size: 15px" id="clienteNombres"></label>
+                            <img class='responsive'
+                                 src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Clientes2.png'/><label
+                                style="font-size: 15px" id="clienteNombres"></label>
                         </div>
                         <div class="collapsible-bod">
                             <table class="table">
                                 <thead>
-                                    <tr>
-                                        <th>
-                                            Deuda
-                                        </th>
-                                        <th>
-                                            Fecha Deuda
-                                        </th>
-                                        <th>
-                                            Pago
-                                        </th>
-                                        <th>
-                                            Fecha Pago
-                                        </th>
-                                        <th>
-                                            Ticket
-                                        </th>
-                                    </tr>
+                                <tr>
+                                    <th>
+                                        Deuda
+                                    </th>
+                                    <th>
+                                        Fecha Deuda
+                                    </th>
+                                    <th>
+                                        Pago
+                                    </th>
+                                    <th>
+                                        Fecha Pago
+                                    </th>
+                                    <th>
+                                        Ticket
+                                    </th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>
-                                            <p id="deuda"></p>
-                                        </td>
-                                        <td>
-                                            <p id="fechadeuda"></p>
-                                        </td>
-                                        <td>
-                                            <p id="pago"></p>
-                                        </td>
-                                        <td>
-                                            <p id="fechapago"></p>
-                                        </td>
-                                        <td>
-                                            <p id="ticket"></p>
-                                        </td>
-                                    </tr>
+                                <tr>
+                                    <td>
+                                        <p id="deuda"></p>
+                                    </td>
+                                    <td>
+                                        <p id="fechadeuda"></p>
+                                    </td>
+                                    <td>
+                                        <p id="pago"></p>
+                                    </td>
+                                    <td>
+                                        <p id="fechapago"></p>
+                                    </td>
+                                    <td>
+                                        <p id="ticket"></p>
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

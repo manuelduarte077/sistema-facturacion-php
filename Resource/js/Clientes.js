@@ -5,6 +5,7 @@ class Clientes extends Uploadpicture {
         this.IdCliente = 0;
         this.Imagen = null;
     }
+
     getCreditos(credito, funcion) {
         let count = 1;
         $.post(
@@ -41,6 +42,7 @@ class Clientes extends Uploadpicture {
             }
         );
     }
+
     registerCliente() {
         var valor = false;
         if (validarEmail($("#email").val())) {
@@ -84,10 +86,11 @@ class Clientes extends Uploadpicture {
             return valor;
         }
     }
+
     getClientes(page) {
         $.post(
             URL + "Clientes/getClientes",
-            { search: $("#searchClientes").val(), page: page },
+            {search: $("#searchClientes").val(), page: page},
             (response) => {
                 // console.log(response);
                 try {
@@ -100,10 +103,11 @@ class Clientes extends Uploadpicture {
             }
         );
     }
+
     getReporteCliente(email) {
         $.post(
             URL + "Clientes/getReporteCliente",
-            { email: email },
+            {email: email},
             (response) => {
 
                 try {
@@ -136,6 +140,7 @@ class Clientes extends Uploadpicture {
             }
         );
     }
+
     setPagos() {
         if (null != localStorage.getItem("reportCliente")) {
             $.post(
@@ -158,6 +163,7 @@ class Clientes extends Uploadpicture {
         }
         return false;
     }
+
     dataCliente(data) {
         this.Funcion = 1;
         this.IdCliente = data.IdClientes;
@@ -172,10 +178,11 @@ class Clientes extends Uploadpicture {
         console.log(data);
         this.getCreditos(data.Creditos, 2);
     }
+
     getTickets(page) {
         $.post(
             URL + "Clientes/getTickets",
-            { search: $("#searchTicket").val(), page: page },
+            {search: $("#searchTicket").val(), page: page},
             (response) => {
                 console.log(response);
                 try {
@@ -188,17 +195,19 @@ class Clientes extends Uploadpicture {
             }
         );
     }
-    exportarExcel(page,valor) {
-        
+
+    exportarExcel(page, valor) {
+
         $.post(
             URL + "Clientes/exportarExcel",
-            { search: $("#searchTicket").val(), page: page,valor:valor },
+            {search: $("#searchTicket").val(), page: page, valor: valor},
             (response) => {
                 console.log(response);
             }
         );
 
     }
+
     restablecerClientes(funcion) {
         document.getElementById("fotoCliente").innerHTML = ['<img class="responsive-img " src="', PATHNAME + "Resource/images/fotos/clientes/default.png", '" title="', , '"/>'].join('');
         /*var instance = M.Modal.getInstance($('#modal1'));

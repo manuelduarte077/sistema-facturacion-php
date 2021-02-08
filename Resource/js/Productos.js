@@ -1,11 +1,12 @@
-class Productos extends Uploadpicture{
+class Productos extends Uploadpicture {
     constructor() {
         super();
     }
+
     getCompras(page) {
         $.post(
             URL + "Productos/getCompras",
-            { search: $("#searchComprasPD").val(), page: page },
+            {search: $("#searchComprasPD").val(), page: page},
             (response) => {
                 //console.log(response);
                 try {
@@ -18,10 +19,11 @@ class Productos extends Uploadpicture{
             }
         );
     }
+
     dataProducto(idTemp) {
         $.post(
             URL + "Productos/getProducto",
-            { idTemp: idTemp },
+            {idTemp: idTemp},
             (response) => {
 
                 try {
@@ -50,6 +52,7 @@ class Productos extends Uploadpicture{
             }
         );
     }
+
     Registrar() {
         $.post(
             "registrarProducto",
@@ -66,10 +69,11 @@ class Productos extends Uploadpicture{
             }
         );
     }
+
     getInventario(page) {
         $.post(
             URL + "Productos/getInventario",
-            { search: $("#productoInventario").val(), page: page },
+            {search: $("#productoInventario").val(), page: page},
             (response) => {
                 try {
                     let item = JSON.parse(response);
@@ -81,35 +85,37 @@ class Productos extends Uploadpicture{
             }
         );
     }
-    detallesProducto(Id){
+
+    detallesProducto(Id) {
         $.post(
             URL + "Productos/getDetalles",
-            { Id: Id },
-            (response) =>{
+            {Id: Id},
+            (response) => {
                 //console.log(response);
                 try {
                     let item = JSON.parse(response);
                     console.log(item);
-                    document.getElementById("productoDetalles").innerHTML = "<img class='imgProducto' src='data:image/jpeg;base64,"+item.Image+"' />";
+                    document.getElementById("productoDetalles").innerHTML = "<img class='imgProducto' src='data:image/jpeg;base64," + item.Image + "' />";
                     document.getElementById("detalleDescripcion").innerHTML = item.Descripcion;
                     $("#barcodeDetalles").barcode(
                         item.Codigo, // Valor del codigo de barras
                         "code11", // tipo (cadena)
-                        );
-                    document.getElementById("descripcionDetalles").value =item.Descripcion;
-                    document.getElementById("precioDetalles").value =item.Precio.replace("$", "");
-                    document.getElementById("descuentoDetalles").value =item.Descuento.replace("%", "");
-                    document.getElementById("depatamentoDetalles").value =item.Departamento;
-                    document.getElementById("categoriaDetalles").value =item.Catgoria;
-                    document.getElementById("fechaDetalles").value =item.Fecha;
+                    );
+                    document.getElementById("descripcionDetalles").value = item.Descripcion;
+                    document.getElementById("precioDetalles").value = item.Precio.replace("$", "");
+                    document.getElementById("descuentoDetalles").value = item.Descuento.replace("%", "");
+                    document.getElementById("depatamentoDetalles").value = item.Departamento;
+                    document.getElementById("categoriaDetalles").value = item.Catgoria;
+                    document.getElementById("fechaDetalles").value = item.Fecha;
                 } catch (error) {
                     document.getElementById("messageDetalles").innerHTML = response;
                 }
             }
         );
-        
+
     }
-    actualizarProducto(){
+
+    actualizarProducto() {
         var data = new FormData();
         $.each($('input[type=file]')[0].files, (i, file) => {
             data.append('file', file);
@@ -127,20 +133,21 @@ class Productos extends Uploadpicture{
             processData: false,
             type: 'POST',
             success: (response) => {
-                if (response == 0){
+                if (response == 0) {
                     window.location.href = URL + "Productos/inventario";
-                }else{
+                } else {
                     $("#messageDetalles").html(response);
                 }
             }
         });
     }
-    exportarInventarios(page){
+
+    exportarInventarios(page) {
         $.post(
             URL + "Productos/exportarInventarios",
-            {search: $("#productoInventario").val(), page: page },
-            (response) =>{
-              
+            {search: $("#productoInventario").val(), page: page},
+            (response) => {
+
             }
         );
     }

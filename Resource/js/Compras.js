@@ -3,10 +3,11 @@ class Compras extends Uploadpicture {
         super();
         this.data = null;
     }
+
     getProveedores(page) {
         $.post(
             URL + "Compras/getProveedores",
-            { search: $("#searchCompraPD").val(), page: page },
+            {search: $("#searchCompraPD").val(), page: page},
             (response) => {
                 // console.log(response);
                 try {
@@ -19,11 +20,13 @@ class Compras extends Uploadpicture {
             }
         );
     }
+
     dataProveedor(data) {
         this.data = data;
         // console.log(data);
         $("#Proveedor").val(data.Proveedor);
     }
+
     detallesCompras() {
         var valor = true;
         if (this.data != null) {
@@ -60,7 +63,6 @@ class Compras extends Uploadpicture {
                             credito,
                             item.Codigo,
                             item.results
-
                         )));
                         window.location.href = URL + "Compras/detalles";
 
@@ -76,6 +78,7 @@ class Compras extends Uploadpicture {
         }
         return valor;
     }
+
     detalles() {
         var item = JSON.parse(localStorage.getItem("Compra"));
         console.log(item);
@@ -101,18 +104,19 @@ class Compras extends Uploadpicture {
             document.getElementById('tickets').style.display = 'none';
             document.getElementById('btnTicket').style.display = 'none';
         }
-        if (item[8] == null){
+        if (item[8] == null) {
             document.getElementById('btnTicket').style.display = 'none';
             document.getElementById('comprar').style.display = 'none';
             document.getElementById("dFecha").innerHTML = item[9];
-        }else{
+        } else {
             document.getElementById("dFecha").innerHTML = getFechas();
         }
         document.getElementById("dImporte").innerHTML = "$" + numberDecimales(importe);
 
-        
+
         document.getElementById("imageDetalles").innerHTML = ['<img class="responsive-img " src="', PATHNAME + "Resource/images/fotos/compras/" + item[7] + ".png", '" title="', escape(item[7]), '"/>'].join('');
     }
+
     Comprar() {
         $.post(
             URL + "Compras/comprar",
@@ -124,29 +128,31 @@ class Compras extends Uploadpicture {
                     document.getElementById("detallesMessage").innerHTML = response;
                 }
 
-               // console.log(response);
+                // console.log(response);
             }
         );
 
     }
-    getCompras(page){
+
+    getCompras(page) {
         $.post(
             URL + "Compras/getCompras",
-            {search: $("#searchCompras").val(), page: page },
-            (response) =>{
-               try {
-                let item = JSON.parse(response);
-                $("#dataFilterCompras").html(item.dataFilter);
-                $("#paginadorCompras").html(item.paginador);
-               } catch (error) {
-                $("#paginadorCompras").html(response);
-               }
+            {search: $("#searchCompras").val(), page: page},
+            (response) => {
+                try {
+                    let item = JSON.parse(response);
+                    $("#dataFilterCompras").html(item.dataFilter);
+                    $("#paginadorCompras").html(item.paginador);
+                } catch (error) {
+                    $("#paginadorCompras").html(response);
+                }
             }
         );
     }
-    getCompra(data){
+
+    getCompra(data) {
         console.log(data);
-        localStorage.setItem("Compra", JSON.stringify( new Array(
+        localStorage.setItem("Compra", JSON.stringify(new Array(
             data.Descripcion,
             data.Cantidad,
             data.Precio,
@@ -160,12 +166,13 @@ class Compras extends Uploadpicture {
         )));
         window.location.href = URL + "Compras/detalles";
     }
-    exportarCompras(page){
+
+    exportarCompras(page) {
         $.post(
             URL + "Compras/exportarCompras",
-            {search: $("#searchCompras").val(), page: page },
-            (response) =>{
-              
+            {search: $("#searchCompras").val(), page: page},
+            (response) => {
+
             }
         );
     }

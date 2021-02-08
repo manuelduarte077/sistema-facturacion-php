@@ -1,10 +1,11 @@
 <?php
-declare (strict_types = 1);
-class Anonymous 
+declare (strict_types=1);
+
+class Anonymous
 {
-    public function userClass($array){
-        return new class($array)
-        {
+    public function userClass($array)
+    {
+        return new class($array) {
             public $NID;
             public $Nombre;
             public $Apellido;
@@ -14,7 +15,9 @@ class Anonymous
             public $Usuario;
             public $Roles;
             public $Imagen;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->NID = $array[0];
                 $this->Nombre = $array[1];
                 $this->Apellido = $array[2];
@@ -26,10 +29,12 @@ class Anonymous
                 $this->Imagen = $array[8];
             }
         };
-        
+
     }
-    public function clientesClass(array $array){
-        return new class($array){
+
+    public function clientesClass(array $array)
+    {
+        return new class($array) {
             var $NID;
             var $Nombre;
             var $Apellido;
@@ -37,11 +42,13 @@ class Anonymous
             var $Direccion;
             var $Telefono;
             var $Creditos;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->NID = $array[0];
                 $this->Nombre = $array[1];
                 $this->Apellido = $array[2];
-                if(is_numeric($array[3])){
+                if (is_numeric($array[3])) {
                     $this->Telefono = $array[3];
                 }
                 $this->Email = $array[4];
@@ -50,15 +57,19 @@ class Anonymous
             }
         };
     }
-    public function reportClientesClass(array $array){
-        return new class($array){
+
+    public function reportClientesClass(array $array)
+    {
+        return new class($array) {
             var $Deuda;
             var $FechaDeuda;
             var $Pago;
             var $FechaPago;
             var $Ticket;
             var $IdClientes;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Deuda = $array[0];
                 $this->FechaDeuda = $array[1];
                 $this->Pago = $array[2];
@@ -68,8 +79,10 @@ class Anonymous
             }
         };
     }
-    public function ticketClass(array $array){
-        return new class($array){
+
+    public function ticketClass(array $array)
+    {
+        return new class($array) {
             var $Propietario;
             var $Deuda;
             var $FechaDeuda;
@@ -77,7 +90,9 @@ class Anonymous
             var $FechaPago;
             var $Ticket;
             var $Email;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Propietario = $array[0];
                 $this->Deuda = $array[1];
                 $this->FechaDeuda = $array[2];
@@ -88,14 +103,17 @@ class Anonymous
             }
         };
     }
-    public function proveedoresClass(array $array){
-        return new class($array){
+
+    public function proveedoresClass(array $array)
+    {
+        return new class($array) {
             var $Proveedor;
             var $Telefono;
             var $Email;
             var $Direccion;
-           
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Proveedor = $array[0];
                 $this->Telefono = $array[1];
                 $this->Email = $array[2];
@@ -103,15 +121,19 @@ class Anonymous
             }
         };
     }
-    public function reportProveedores(array $array){
-        return new class($array){
+
+    public function reportProveedores(array $array)
+    {
+        return new class($array) {
             var $Deuda;
             var $FechaDeuda;
             var $Pago;
             var $FechaPago;
             var $Ticket;
             var $IdProveedor;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Deuda = $array[0];
                 $this->FechaDeuda = $array[1];
                 $this->Pago = $array[2];
@@ -121,8 +143,10 @@ class Anonymous
             }
         };
     }
-    public function TCompras(array $array){
-        return new class($array){
+
+    public function TCompras(array $array)
+    {
+        return new class($array) {
             var $Descripcion;
             var $Cantidad;
             var $Precio;
@@ -139,8 +163,10 @@ class Anonymous
             var $Fecha;
             var $Codigo;
             var $Credito;
-            function __construct($array){
-                if(0 < count($array)){
+
+            function __construct($array)
+            {
+                if (0 < count($array)) {
                     $this->Descripcion = $array[0];
                     $this->Cantidad = $array[1];
                     $this->Precio = $array[2];
@@ -161,9 +187,11 @@ class Anonymous
             }
         };
     }
-    public function TCompras_temp(array $array){
-        return new class($array){
-           // public $ID;
+
+    public function TCompras_temp(array $array)
+    {
+        return new class($array) {
+            // public $ID;
             public $Descripcion;
             public $Cantidad;
             public $Precio;
@@ -174,7 +202,9 @@ class Anonymous
             public $Credito;
             public $Fecha;
             public $Codigo;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 //$this->ID = $array[0];
                 $this->Descripcion = $array[0];
                 $this->Cantidad = $array[1];
@@ -189,8 +219,10 @@ class Anonymous
             }
         };
     }
-    public function TProductos(array $array){
-        return new class($array){
+
+    public function TProductos(array $array)
+    {
+        return new class($array) {
             public $Codigo;
             public $Descripcion;
             public $Precio;
@@ -203,7 +235,9 @@ class Anonymous
             public $Fecha;
             public $Compra;
             public $Image;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Codigo = $array[0];
                 $this->Descripcion = $array[1];
                 $this->Precio = $array[2];
@@ -219,15 +253,19 @@ class Anonymous
             }
         };
     }
-    public function TBodega(array $array){
-        return new class($array){
+
+    public function TBodega(array $array)
+    {
+        return new class($array) {
             public $Codigo;
             public $Existencia;
             public $Dia;
             public $Mes;
             public $Year;
             public $Fecha;
-            function __construct($array){
+
+            function __construct($array)
+            {
                 $this->Codigo = $array[0];
                 $this->Existencia = $array[1];
                 $this->Dia = $array[2];
@@ -237,24 +275,30 @@ class Anonymous
             }
         };
     }
-    public function TCajas(array $array){
-        return new class($array){
+
+    public function TCajas(array $array)
+    {
+        return new class($array) {
             public $Caja;
             public $Estado;
             public $Asignada;
             public $Usuario;
-            function __construct($array){
-                if(0 < count($array)){
+
+            function __construct($array)
+            {
+                if (0 < count($array)) {
                     $this->Caja = $array[0];
                     $this->Estado = $array[1];
                     $this->Asignada = $array[2];
                     $this->Usuario = $array[3];
-                } 
+                }
             }
         };
     }
-    public function TCajas_registros(array $array){
-        return new class($array){
+
+    public function TCajas_registros(array $array)
+    {
+        return new class($array) {
             public $IdUsuario;
             public $Nombre;
             public $Apellido;
@@ -268,8 +312,10 @@ class Anonymous
             public $Mes;
             public $Year;
             public $Fecha;
-            function __construct($array){
-                if(0 < count($array)){
+
+            function __construct($array)
+            {
+                if (0 < count($array)) {
                     $this->IdUsuario = $array[0];
                     $this->Nombre = $array[1];
                     $this->Apellido = $array[2];
@@ -287,8 +333,10 @@ class Anonymous
             }
         };
     }
-    public function TTempo_ventas(array $array){
-        return new class($array){
+
+    public function TTempo_ventas(array $array)
+    {
+        return new class($array) {
             public $Codigo;
             public $Descripcion;
             public $Precio;
@@ -296,8 +344,10 @@ class Anonymous
             public $Importe;
             public $Caja;
             public $IdUsuario;
-            function __construct($array){
-                if(0 < count($array)){
+
+            function __construct($array)
+            {
+                if (0 < count($array)) {
                     $this->Codigo = $array[0];
                     $this->Descripcion = $array[1];
                     $this->Precio = $array[2];
@@ -309,8 +359,10 @@ class Anonymous
             }
         };
     }
-    public function TVentas(array $array){
-        return new class($array){
+
+    public function TVentas(array $array)
+    {
+        return new class($array) {
             public $Codigo;
             public $Descripcion;
             public $Precio;
@@ -322,8 +374,10 @@ class Anonymous
             public $Fecha;
             public $Caja;
             public $IdUsuario;
-            function __construct($array){
-                if(0 < count($array)){
+
+            function __construct($array)
+            {
+                if (0 < count($array)) {
                     $this->Codigo = $array[0];
                     $this->Descripcion = $array[1];
                     $this->Precio = $array[2];

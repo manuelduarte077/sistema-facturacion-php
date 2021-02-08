@@ -3,6 +3,7 @@
 namespace Slam\Excel\Pear\OLE\PPS;
 
 use Slam\Excel;
+use function fwrite;
 
 /**
  * Class for creating File PPS's for Excel_OLE containers.
@@ -47,6 +48,6 @@ class File extends Excel\Pear\OLE\PPS
      */
     public function append($data)
     {
-        \fwrite($this->_PPS_FILE, $data);
+        fwrite($this->_PPS_FILE, $data);
     }
 }

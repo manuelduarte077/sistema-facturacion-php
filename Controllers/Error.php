@@ -1,9 +1,11 @@
 <?php
+
 class Errors extends Controllers
 {
-    public function error(){
-        $this->view->render($this,"error",null);
-    } 
+    public function error()
+    {
+        $this->view->render($this, "error", null);
+    }
 }
 
 

@@ -14,36 +14,37 @@
             <div class="row">
                 <div class="input-field col s0">
                     <a onclick="cliente.restablecerClientes(2);" class="waves-effect waves-light btn modal-trigger"
-                        href="#modal1">Registrar</a>
+                       href="#modal1">Registrar</a>
                 </div>
                 <div class="input-field col s6">
                     <input placeholder="Buscar cliente" id="searchClientes" type="text" onKeyUp="getClientes(1)">
                     <label for="searchClientes">Buscar usuario</label>
                 </div>
             </div>
-            <button class="waves-effect waves-light btn-small grey darken-3" onclick="exportarClientes()">Export</button>
+            <button class="waves-effect waves-light btn-small grey darken-3" onclick="exportarClientes()">Export
+            </button>
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header">
-                        <img class='responsive' src='../Resource/images/iconos/Clientes2.png' />Clientes
+                        <img class='responsive' src='../Resource/images/iconos/Clientes2.png'/>Clientes
                     </div>
                     <div class="collapsible-body">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>
-                                        Foto
-                                    </th>
-                                    <th>
-                                        Nombre
-                                    </th>
-                                    <th>
-                                        Apellido
-                                    </th>
-                                    <th>
-                                        Opciones
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    Foto
+                                </th>
+                                <th>
+                                    Nombre
+                                </th>
+                                <th>
+                                    Apellido
+                                </th>
+                                <th>
+                                    Opciones
+                                </th>
+                            </tr>
                             </thead>
                             <tbody id="resultCliente">
 
@@ -63,33 +64,36 @@
                     <label for="searchTicket">Buscar ticket</label>
                 </div>
             </div>
-            <button class="waves-effect waves-light btn-small amber darken-3" onclick="exportarTicketClientes()">Export</button>
+            <button class="waves-effect waves-light btn-small amber darken-3" onclick="exportarTicketClientes()">
+                Export
+            </button>
             <ul class="collapsible">
                 <li>
                     <div class="collapsible-header">
-                        <img class='responsive' src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Clientes2.png' /><label
+                        <img class='responsive'
+                             src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Clientes2.png'/><label
                             style="font-size: 15px">Ticket</label>
                     </div>
                     <div class="collapsible-body">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>
-                                        Deuda
-                                    </th>
-                                    <th>
-                                        Fecha Deuda
-                                    </th>
-                                    <th>
-                                        Pago
-                                    </th>
-                                    <th>
-                                        Fecha Pago
-                                    </th>
-                                    <th>
-                                        Ticket
-                                    </th>
-                                </tr>
+                            <tr>
+                                <th>
+                                    Deuda
+                                </th>
+                                <th>
+                                    Fecha Deuda
+                                </th>
+                                <th>
+                                    Pago
+                                </th>
+                                <th>
+                                    Fecha Pago
+                                </th>
+                                <th>
+                                    Ticket
+                                </th>
+                            </tr>
                             </thead>
                             <tbody id="resultTicket">
 
@@ -147,7 +151,7 @@
                     </div>
                     <div class="input-field col s6">
                         <input placeholder="Apellido" name="apellido" id="apellido" type="text" class="validate"
-                            required>
+                               required>
                         <label class="error" for="apellido">Apellido</label>
                     </div>
                 </div>
@@ -158,7 +162,7 @@
                     </div>
                     <div class="input-field col s6">
                         <input placeholder="Nº Telefono" name="telefono" id="telefono" type="number" class="validate"
-                            required>
+                               required>
                         <label class="error" for="telefono">Nº Telefono</label>
                     </div>
                 </div>
@@ -169,7 +173,7 @@
                     </div>
                     <div class="input-field col s6">
                         <input placeholder="Direccion" type="text" name="direccion" id="direccion" class="validate "
-                            required />
+                               required/>
                         <label class="error" for="direccion">Direccion</label>
                     </div>
                 </div>
@@ -181,7 +185,7 @@
                         <label>Creditos</label>
                     </div>
                 </div>
-                <input type="text" id="textError" required />
+                <input type="text" id="textError" required/>
             </div>
         </div>
         <div class="modal-footer">

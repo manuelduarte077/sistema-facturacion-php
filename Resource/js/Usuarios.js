@@ -1,4 +1,3 @@
-
 class Usuarios extends Uploadpicture {
     constructor() {
         super();
@@ -6,6 +5,7 @@ class Usuarios extends Uploadpicture {
         this.IdUsuario = 0;
         this.Imagen = null;
     }
+
     loginUser() {
         if (validarEmail(document.getElementById("email").value)) {
             $.post(
@@ -43,6 +43,7 @@ class Usuarios extends Uploadpicture {
             //M.toast({ html: 'Ingrese una dirección de correo electrónico válida', classes: 'rounded' });
         }
     }
+
     userData(URLactual) {
         if (PATHNAME == URLactual) {
             localStorage.removeItem("user");
@@ -64,6 +65,7 @@ class Usuarios extends Uploadpicture {
             }
         }
     }
+
     getRoles(role, funcion) {
         let count = 1;
         $.post(
@@ -107,7 +109,7 @@ class Usuarios extends Uploadpicture {
     }
 
     registerUser() {
-        let valor =  false;
+        let valor = false;
         if (validarEmail(document.getElementById("email").value)) {
             var data = new FormData();
             $.each($('input[type=file]')[0].files, (i, file) => {
@@ -150,6 +152,7 @@ class Usuarios extends Uploadpicture {
         }
         return valor;
     }
+
     getUsers(valor, page) {
         var valor = valor != null ? valor : "";
         $.post(
@@ -170,6 +173,7 @@ class Usuarios extends Uploadpicture {
                 console.log(response);
             });
     }
+
     editUser(data) {
         this.Funcion = 1;
         this.IdUsuario = data.IdUsuario;
@@ -185,6 +189,7 @@ class Usuarios extends Uploadpicture {
         document.getElementById("password").disabled = true;
         this.getRoles(data.Roles, 2);
     }
+
     deleteUser(data) {
         $.post(
             URL + "Usuarios/deleteUser",
@@ -201,6 +206,7 @@ class Usuarios extends Uploadpicture {
                 console.log(response);
             });
     }
+
     restablecerUser() {
         this.Funcion = 0;
         this.IdUsuario = 0;
@@ -221,6 +227,7 @@ class Usuarios extends Uploadpicture {
         document.getElementById("password").disabled = false;
         window.location.href = URL + "Usuarios/usuarios";
     }
+
     sessionClose() {
         localStorage.removeItem("user");
         document.getElementById('menuNavbar1').style.display = 'none';

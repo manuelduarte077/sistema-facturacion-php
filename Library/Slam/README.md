@@ -6,15 +6,14 @@
 
 This package is _NOT_ intended to be complete and flexible, but to be *fast*.
 
-[PHPOffice/PHPExcel](https://github.com/PHPOffice/PHPExcel) and [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet) are great libraries,
-but abstract everything in memory before writing to the disk. This is
-extremely inefficent and slow if you need to write a giant XLS with thousands
-rows and hundreds columns.
+[PHPOffice/PHPExcel](https://github.com/PHPOffice/PHPExcel)
+and [PHPOffice/PhpSpreadsheet](https://github.com/PHPOffice/PhpSpreadsheet) are great libraries, but abstract everything
+in memory before writing to the disk. This is extremely inefficent and slow if you need to write a giant XLS with
+thousands rows and hundreds columns.
 
-Based on [Spreadsheet_Excel_Writer v0.9.3](http://pear.php.net/package/Spreadsheet_Excel_Writer),
-which can be found active on [Github](https://github.com/pear/Spreadsheet_Excel_Writer).
-This is not a fork: I copied it and adapted to work with PHP 7.1 and applied
-some coding standard fixes and some Scrutinizer patches.
+Based on [Spreadsheet_Excel_Writer v0.9.3](http://pear.php.net/package/Spreadsheet_Excel_Writer), which can be found
+active on [Github](https://github.com/pear/Spreadsheet_Excel_Writer). This is not a fork: I copied it and adapted to
+work with PHP 7.1 and applied some coding standard fixes and some Scrutinizer patches.
 
 ## Installation
 

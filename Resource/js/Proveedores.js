@@ -5,6 +5,7 @@ class Proveedores extends Uploadpicture {
         this.IdProveedor = 0;
         this.Imagen = null;
     }
+
     registerProveedores() {
         var data = new FormData();
         $.each($('input[type=file]')[0].files, (i, file) => {
@@ -35,12 +36,13 @@ class Proveedores extends Uploadpicture {
         });
         return false;
     }
+
     getProveedores(page) {
         $.post(
             URL + "Proveedores/getProveedores",
-            { search: $("#searchProveedores").val(), page: page },
+            {search: $("#searchProveedores").val(), page: page},
             (response) => {
-               // console.log(response);
+                // console.log(response);
                 try {
                     let item = JSON.parse(response);
                     $("#resultProveedores").html(item.dataFilter);
@@ -51,10 +53,11 @@ class Proveedores extends Uploadpicture {
             }
         );
     }
+
     dataProveedor(email) {
         $.post(
             URL + "Proveedores/dataProveedor",
-            { email: email },
+            {email: email},
             (response) => {
                 switch (response) {
                     case "1":
@@ -80,14 +83,15 @@ class Proveedores extends Uploadpicture {
                         }
                         break;
                 }
-               // console.log(response);
+                // console.log(response);
             }
         );
     }
+
     getReporteProveedor(email) {
         $.post(
             URL + "Proveedores/getReporteProveedor",
-            { email: email },
+            {email: email},
             (response) => {
                 try {
                     let item = JSON.parse(response);
@@ -108,10 +112,11 @@ class Proveedores extends Uploadpicture {
                 } catch (error) {
                     $("#reporteProveedorMessage").html(response);
                 }
-               // console.log(response);
+                // console.log(response);
             }
         );
     }
+
     setPagos() {
         $.post(
             URL + "Proveedores/setPagos",
@@ -133,10 +138,11 @@ class Proveedores extends Uploadpicture {
 
         return false;
     }
+
     getTickets(page) {
         $.post(
             URL + "Proveedores/getTickets",
-            { search: $("#searchTicket").val(), page: page },
+            {search: $("#searchTicket").val(), page: page},
             (response) => {
                 console.log(response);
                 try {
@@ -149,16 +155,18 @@ class Proveedores extends Uploadpicture {
             }
         );
     }
-    exportarExcel(page,valor) {
+
+    exportarExcel(page, valor) {
         $.post(
             URL + "Proveedores/exportarExcel",
-            { search: $("#searchTicket").val(), page: page,valor:valor },
+            {search: $("#searchTicket").val(), page: page, valor: valor},
             (response) => {
                 console.log(response);
             }
         );
 
     }
+
     restablecerProveedores() {
         this.Funcion = 0;
         this.IdProveedor = 0;

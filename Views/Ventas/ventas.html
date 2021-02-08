@@ -11,17 +11,17 @@
                             <li class="collection-item">
                                 <table class="table">
                                     <tbody>
-                                        <tr>
-                                            <td>
-                                                Monto
-                                                <p id="vtMonto"></p>
-                                                <input type="hidden" id="vtImporte" name="vtImporte" />
-                                            </td>
-                                            <td>
-                                                Deuda
-                                                <p id="vtDeuda"> </p>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td>
+                                            Monto
+                                            <p id="vtMonto"></p>
+                                            <input type="hidden" id="vtImporte" name="vtImporte"/>
+                                        </td>
+                                        <td>
+                                            Deuda
+                                            <p id="vtDeuda"></p>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </li>
@@ -29,10 +29,11 @@
                                 <div class="row">
                                     <div class="col s10">
                                         <label>
-                                            <input type="checkbox" id="tvCheckbox" class="filled-in checkbox" />
+                                            <input type="checkbox" id="tvCheckbox" class="filled-in checkbox"/>
                                             <span>Credito</span>
                                         </label>
-                                    </div><br /><br />
+                                    </div>
+                                    <br/><br/>
                                     <div class="input-field col s10">
                                         <input name="nid" id="textNid" disabled>
                                         <label for="nid">NID</label>
@@ -40,19 +41,19 @@
                                     <div class="input-field col s10">
                                         <table class="table">
                                             <tbody>
-                                                <tr>
-                                                    <td>
-                                                        Su cambio
-                                                        <p id="vtCambio"></p>
-                                                        <input type="hidden" name="cambio" id="textCambio">
-                                                    </td>
-                                                </tr>
+                                            <tr>
+                                                <td>
+                                                    Su cambio
+                                                    <p id="vtCambio"></p>
+                                                    <input type="hidden" name="cambio" id="textCambio">
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="input-field col s10">
                                         <input type="text" id="vtPagos" name="pago"
-                                            onkeypress="return new Ventas().pagos(event,this);">
+                                               onkeypress="return new Ventas().pagos(event,this);">
                                         <label for="vtPagos">Pago</label>
                                     </div>
                                     <div class="input-field col s10">
@@ -77,7 +78,8 @@
                                             </div>
                                             <div class="input-field col s6">
                                                 <button type="submit" onclick="new Ventas().SearchProducto()"
-                                                    class="waves-effect waves-light btn-small">Buscar</button>
+                                                        class="waves-effect waves-light btn-small">Buscar
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
@@ -85,22 +87,22 @@
                             </li>
                             <li class="collection-item">
                                 <img class='responsive'
-                                    src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Shopping_cart2.png' />
+                                     src='http://localhost:8080/sistem_facturacion/Resource/images/iconos/Shopping_cart2.png'/>
                             </li>
                             <li class="collection-item">
                                 <table class="table">
                                     <thead>
-                                        <tr>
-                                            <th>
-                                                Descripcion
-                                            </th>
-                                            <th>
-                                                Cantidad
-                                            </th>
-                                            <th>
-                                                Precio
-                                            </th>
-                                        </tr>
+                                    <tr>
+                                        <th>
+                                            Descripcion
+                                        </th>
+                                        <th>
+                                            Cantidad
+                                        </th>
+                                        <th>
+                                            Precio
+                                        </th>
+                                    </tr>
                                     </thead>
                                     <tbody id="tempoVenta">
 

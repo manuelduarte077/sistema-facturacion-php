@@ -1,9 +1,11 @@
-.btn-floating{
+.btn-floating {
     background: url(../images/iconos/ic_reorder_whites.png) no-repeat;
 }
-.img{
-    max-width: 100%; 
+
+.img {
+    max-width: 100%;
 }
+
 .side-nav {
     top: 0;
     margin: 0;
@@ -12,38 +14,48 @@
     overflow-y: auto;
     will-change: transform;
 }
+
 .Message {
     color: brown;
 }
+
 .collection {
-    border: 0px solid #e0e0e0;   
+    border: 0px solid #e0e0e0;
 }
-.collection .collection-item.avatar:not(.circle-clipper)>.circle, .collection .collection-item.avatar :not(.circle-clipper)>.circle {
+
+.collection .collection-item.avatar:not(.circle-clipper) > .circle, .collection .collection-item.avatar :not(.circle-clipper) > .circle {
     width: 72px;
     height: 42px;
     padding: 0px;
 }
+
 .circle {
     border-radius: 0%;
 }
+
 .row {
     margin-bottom: 0px;
 }
-.hidenn{
+
+.hidenn {
     visibility: hidden;
     height: 0px;
     width: 0px;
 }
+
 .imgProducto {
     max-width: 100%;
 }
+
 .tables td {
     font-size: 10px;
 }
+
 td, th {
-    padding: 5px;    
+    padding: 5px;
 }
-#textError{
+
+#textError {
     visibility: hidden;
     margin-left: -200px;
     height: 0px;
@@ -53,40 +65,49 @@ td, th {
 .card .card-content {
     padding: 10px;
 }
+
 .collection.with-header .collection-item {
     padding-left: 0px;
 }
-@media(max-width: 1024px){
+
+@media (max-width: 1024px) {
     .side-nav {
         display: none;
     }
+
     .container2 {
-       
+
         margin: 10px 10px 0px;
     }
+
     .collection .collection-item.avatar {
         padding-left: 70px;
     }
+
     .row .col.s5 {
         width: 46.3%;
     }
 }
-@media(min-width: 800px){
+
+@media (min-width: 800px) {
     .container {
         max-width: 30%;
     }
+
     .side-nav {
         max-width: 20%;
         display: block;
     }
+
     .container2 {
         width: 75%;
         margin: -270px 280px 0px;
     }
+
     .collection .collection-item.avatar {
         min-height: 50px;
         padding-left: 0px;
-        max-width: 100%; 
-        
+        max-width: 100%;
+
     }
 }
